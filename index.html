@@ -5,28 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>SNOPOR TECHNOLOGIES</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
             background-color: #f8fafc;
             color: #1e293b;
             line-height: 1.5;
         }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-        .lang-bar {
-            position: fixed;
-            top: 1rem;
-            right: 1.2rem;
-            z-index: 9999;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .lang-bar { position: fixed; top: 1rem; right: 1.2rem; z-index: 9999; }
         #langSelect {
             padding: 0.5rem 1.1rem;
             border-radius: 50px;
@@ -40,18 +27,8 @@
             color: #2a5298;
             outline: none;
         }
-        #langSelect:hover {
-            background: #f1f5f9;
-            transform: scale(1.04);
-        }
-        #langSelect option {
-            border-radius: 1rem;
-            padding: 0.4rem;
-        }
-        .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+        #langSelect:hover { background: #f1f5f9; transform: scale(1.04); }
+        .hero { text-align: center; margin-bottom: 3rem; }
         .hero h1 {
             font-size: 2.8rem;
             font-weight: 700;
@@ -76,23 +53,10 @@
             margin-bottom: 3rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .card:hover {
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-        }
-        .grid-two {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem;
-        }
-        .grid-two .image-area {
-            flex: 1.2;
-            min-width: 260px;
-        }
-        .grid-two .text-area {
-            flex: 1;
-            padding: 1rem 0;
-        }
+        .card:hover { box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1); }
+        .grid-two { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+        .grid-two .image-area { flex: 1.2; min-width: 260px; }
+        .grid-two .text-area { flex: 1; padding: 1rem 0; }
         .custom-img {
             width: 100%;
             height: auto;
@@ -111,21 +75,9 @@
             border-left: 5px solid #2a5298;
             padding-left: 1rem;
         }
-        .desc-text {
-            color: #2d3a4b;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        .sub-list {
-            list-style: none;
-            margin-top: 0.8rem;
-        }
-        .sub-list li {
-            margin-bottom: 0.6rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
+        .desc-text { color: #2d3a4b; margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.6; }
+        .sub-list { list-style: none; margin-top: 0.8rem; }
+        .sub-list li { margin-bottom: 0.6rem; padding-left: 1.5rem; position: relative; }
         .sub-list li::before {
             content: "•";
             color: #2a5298;
@@ -133,16 +85,8 @@
             font-size: 1.2rem;
             position: absolute; left: 0;
         }
-        .series-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-        .series-anchor {
-            scroll-margin-top: 80px;
-        }
+        .series-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 3rem 0; }
+        .series-anchor { scroll-margin-top: 80px; }
         .series-card {
             flex: 1;
             min-width: 250px;
@@ -155,10 +99,7 @@
             text-align: center;
             padding-bottom: 1.5rem;
         }
-        .series-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 30px -12px rgba(0,0,0,0.2);
-        }
+        .series-card:hover { transform: translateY(-8px); box-shadow: 0 25px 30px -12px rgba(0,0,0,0.2); }
         .series-card img {
             width: 100%;
             height: 200px;
@@ -166,15 +107,8 @@
             background: #eef2ff;
             cursor: pointer;
         }
-        .series-card h3 {
-            font-size: 1.6rem;
-            margin: 1rem 0 0.5rem;
-            color: #0f172a;
-        }
-        .series-card p {
-            padding: 0 1rem;
-            color: #475569;
-        }
+        .series-card h3 { font-size: 1.6rem; margin: 1rem 0 0.5rem; color: #0f172a; }
+        .series-card p { padding: 0 1rem; color: #475569; }
         .badge {
             display: inline-block;
             background: #2a5298;
@@ -195,15 +129,8 @@
             font-weight: 500;
             transition: 0.2s;
         }
-        .back-home:hover {
-            background: #2a5298;
-        }
-        .product-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
+        .back-home:hover { background: #2a5298; }
+        .product-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
         .product-item {
             background: white;
             border-radius: 1.2rem;
@@ -211,10 +138,7 @@
             box-shadow: 0 10px 15px -6px rgba(0,0,0,0.05);
             transition: 0.2s;
         }
-        .product-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
-        }
+        .product-item:hover { transform: scale(1.02); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1); }
         .product-item img {
             width: 100%;
             height: 200px;
@@ -222,21 +146,9 @@
             background: #eef2ff;
             cursor: pointer;
         }
-        .product-info {
-            padding: 1rem 1.2rem 1.5rem;
-        }
-        .product-info h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #0f172a;
-        }
-        .product-info p {
-            color: #334155;
-            font-size: 0.95rem;
-            white-space: pre-wrap;
-            word-break: break-word;
-            line-height: 1.5;
-        }
+        .product-info { padding: 1rem 1.2rem 1.5rem; }
+        .product-info h4 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #0f172a; }
+        .product-info p { color: #334155; font-size: 0.95rem; white-space: pre-wrap; word-break: break-word; line-height: 1.5; }
         .detail-title {
             font-size: 2rem;
             font-weight: 700;
@@ -263,10 +175,7 @@
             font-size: 28px;
             border: none;
         }
-        .message-float-btn:hover {
-            background-color: #e67e22;
-            transform: scale(1.05);
-        }
+        .message-float-btn:hover { background-color: #e67e22; transform: scale(1.05); }
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -282,10 +191,7 @@
             opacity: 0;
             transition: 0.2s;
         }
-        .modal-overlay.active {
-            visibility: visible;
-            opacity: 1;
-        }
+        .modal-overlay.active { visibility: visible; opacity: 1; }
         .modal-content {
             background: white;
             max-width: 500px;
@@ -295,11 +201,7 @@
             position: relative;
             box-shadow: 0 25px 40px rgba(0,0,0,0.2);
         }
-        .modal-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #1e293b;
-        }
+        .modal-content h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #1e293b; }
         .modal-content input, .modal-content textarea, .modal-content select {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -309,11 +211,7 @@
             font-family: inherit;
             font-size: 0.95rem;
         }
-        .modal-content label {
-            font-weight: 600;
-            display: block;
-            margin-top: 0.2rem;
-        }
+        .modal-content label { font-weight: 600; display: block; margin-top: 0.2rem; }
         .send-btn {
             background: #2a5298;
             color: white;
@@ -327,9 +225,7 @@
             margin-top: 0.5rem;
             transition: 0.2s;
         }
-        .send-btn:hover {
-            background: #e67e22;
-        }
+        .send-btn:hover { background: #e67e22; }
         .close-modal {
             position: absolute;
             top: 1rem;
@@ -362,10 +258,7 @@
             transition: 0.25s;
             cursor: pointer;
         }
-        .img-lightbox.active {
-            visibility: visible;
-            opacity: 1;
-        }
+        .img-lightbox.active { visibility: visible; opacity: 1; }
         .img-lightbox img {
             max-width: 90vw;
             max-height: 90vh;
@@ -382,14 +275,12 @@
     </style>
 </head>
 <body>
-
 <div class="lang-bar">
     <select id="langSelect">
         <option value="zh">中文</option>
         <option value="en">English</option>
     </select>
 </div>
-
 <div id="app">
     <div id="homePage">
         <div class="container">
@@ -398,7 +289,6 @@
                 <div class="tagline" data-i18n="tagline">始于2020 · 电动车辆全球开拓者</div>
                 <p style="max-width:700px;margin:1rem auto 0;color:#4b5563;" data-i18n="hero_sub">研发 · 生产 · 出口 | 广东总公司 & 海外基地</p>
             </div>
-
             <div class="card">
                 <div class="grid-two" style="padding:1.8rem;">
                     <div class="image-area">
@@ -413,7 +303,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="grid-two" style="padding:1.8rem;flex-direction:row-reverse;">
                     <div class="image-area">
@@ -431,7 +320,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="seriesAnchor" class="series-anchor">
                 <h2 class="section-title" style="border-left-color:#e67e22;" data-i18n="core_products">核心产品系列</h2>
                 <p class="desc-text" style="margin-bottom:1rem;" data-i18n="products_tip">三大产品线，满足不同出行与商用需求：</p>
@@ -456,9 +344,7 @@
                     </div>
                 </div>
             </div>
-
             <hr style="margin:2rem 0;border:0;height:1px;background:linear-gradient(to right,#e2e8f0,transparent);">
-
             <div class="card" style="background:linear-gradient(120deg,#fff,#f1f5f9);">
                 <div class="grid-two" style="padding:1.5rem 2rem;">
                     <div class="image-area">
@@ -475,7 +361,6 @@
             </div>
         </div>
     </div>
-
     <div id="detailPage" style="display:none;">
         <div class="container">
             <a href="#" id="backHomeLink" class="back-home" data-i18n="back_home">← 返回首页</a>
@@ -483,95 +368,42 @@
         </div>
     </div>
 </div>
-
 <div id="imageLightbox" class="img-lightbox">
     <img id="lightboxImg" src="" alt="Preview">
 </div>
-
 <div id="messageModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-modal" id="closeModalBtn">&times;</span>
-        <h3 data-i18n="leave_msg">Leave Your Message</h3>
+        <h3 data-i18n="leave_msg">留言咨询</h3>
+        <!-- 【核心修复】纯原生表单，无JS依赖，100%能提交 -->
         <form 
-  action="https://formspree.io/f/xzzvggao" 
-  method="POST"
-  style="display: grid; gap: 0.8rem; width: 100%;"
->
-  <label style="font-weight: 600; margin-top: 0.2rem;">姓名 *</label>
-  <input 
-    type="text" 
-    name="name" 
-    required 
-    placeholder="Your full name"
-    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
-  >
-
-  <label style="font-weight: 600; margin-top: 0.2rem;">邮箱 *</label>
-  <input 
-    type="email" 
-    name="email" 
-    required 
-    placeholder="example@domain.com"
-    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
-  >
-
-  <label style="font-weight: 600; margin-top: 0.2rem;">电话</label>
-  <input 
-    type="tel" 
-    name="phone" 
-    placeholder="+86 123 4567"
-    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
-  >
-
-  <label style="font-weight: 600; margin-top: 0.2rem;">WhatsApp</label>
-  <input 
-    type="text" 
-    name="whatsapp" 
-    placeholder="WhatsApp number"
-    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
-  >
-
-  <label style="font-weight: 600; margin-top: 0.2rem;">产品需求</label>
-  <textarea 
-    name="message" 
-    rows="2" 
-    placeholder="Which product you interested?"
-    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
-  ></textarea>
-
-  <button 
-    type="submit" 
-    style="
-      background: #2a5298; 
-      color: white; 
-      border: none; 
-      padding: 0.75rem; 
-      width: 100%; 
-      border-radius: 2rem; 
-      font-size: 1rem; 
-      font-weight: bold; 
-      cursor: pointer; 
-      margin-top: 0.5rem;
-      transition: 0.2s;
-    "
-    onmouseover="this.style.background='#e67e22'"
-    onmouseout="this.style.background='#2a5298'"
-  >
-    发送留言
-  </button>
-</form>
-      
-        <div id="formFeedback" style="font-size:0.8rem;margin-top:0.5rem;color:#16a34a;"></div>
+          action="https://formspree.io/f/xzzvggao" 
+          method="POST"
+        >
+            <label data-i18n="form_name">姓名 *</label>
+            <input type="text" name="name" required placeholder="Your full name">
+            
+            <label data-i18n="form_email">邮箱 *</label>
+            <input type="email" name="email" required placeholder="example@domain.com">
+            
+            <label data-i18n="form_phone">电话</label>
+            <input type="tel" name="phone" placeholder="+86 123 4567">
+            
+            <label data-i18n="form_whatsapp">WhatsApp</label>
+            <input type="text" name="whatsapp" placeholder="WhatsApp number">
+            
+            <label data-i18n="form_requirement">产品需求</label>
+            <textarea name="message" rows="2" placeholder="Which product you interested?"></textarea>
+            
+            <button type="submit" class="send-btn" data-i18n="send_msg">发送留言</button>
+        </form>
     </div>
 </div>
-
 <button class="message-float-btn" id="openModalBtn">✉️</button>
-
 <footer>
     <p data-i18n="footer">© SNOPOR | 专业电动摩托车 · 燃油摩托车 · 燃油三轮车制造商</p>
     <p style="font-size:0.75rem;margin-top:6px;" data-i18n="footer_note">网站由新动力公司自行设计，图片和文字独立编辑</p>
 </footer>
-
 <script>
 const i18n = {
     zh: {
@@ -619,7 +451,6 @@ const i18n = {
         footer_note: "Website designed by SNOPOR, all rights reserved"
     }
 };
-
 const electricBikes = [
     { name: "SN1500D-1", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1750×700×1100mm\n轴距:1360mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:45km/h\n续航:60-80km\n电池:锂电/铅酸 72V20Ah/30Ah\n充电:6H\n电机:800W 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1750×700×1100mm\nWheelbase:1360mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:45km/h\nRange:60-80km\nBattery:Li/Lead-acid 72V20Ah/30Ah\nCharge:6H\nMotor:800W Torque120N.m", img: "dian1.png" },
     { name: "SN1500D-2", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1700×730×1050mm\n轴距:1300mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:45km/h\n续航:60-80km\n电池:锂电/铅酸 72V20Ah/30Ah\n充电:6H\n电机:800W 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1700×730×1050mm\nWheelbase:1300mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:45km/h\nRange:60-80km\nBattery:Li/Lead-acid 72V20Ah/30Ah\nCharge:6H\nMotor:800W Torque120N.m", img: "dian2.png" },
@@ -642,7 +473,6 @@ const fuelTrikes = [
     { name: "SN150ZH-175", zh: "尺寸:3370×1400×1880mm\n轴距:2250mm\n重量:410kg\n油箱:17L\n制动:鼓刹\n载重:1000kg\n时速:60km/h\n发动机:149cc 风冷四冲程\n功率:9.5kW/8000rpm\n扭矩:12.5N.m/6500rpm\n油耗:8.7L/100km", en: "Size:3370×1400×1880mm\nWheelbase:2250mm\nWeight:410kg\nFuel:17L\nBrake:Drum\nLoad:1000kg\nSpeed:60km/h\nEngine:149cc 4-stroke\nPower:9.5kW/8000rpm\nTorque:12.5N.m/6500rpm\nConsumption:8.7L/100km", img: "san3.png" },
     { name: "SN150ZH-200", zh: "尺寸:3550×1400×1870mm\n轴距:2330mm\n重量:530kg\n油箱:16L\n制动:鼓刹\n载重:1000kg\n时速:60km/h\n发动机:197cc 风冷四冲程\n功率:10.2kW/7500rpm\n扭矩:14.5N.m/6500rpm\n油耗:9.3L/100km", en: "Size:3550×1400×1870mm\nWheelbase:2330mm\nWeight:530kg\nFuel:16L\nBrake:Drum\nLoad:1000kg\nSpeed:60km/h\nEngine:197cc 4-stroke\nPower:10.2kW/7500rpm\nTorque:14.5N.m/6500rpm\nConsumption:9.3L/100km", img: "san4.png" }
 ];
-
 let currentLang = localStorage.getItem('site_lang') || 'zh';
 const homePage = document.getElementById('homePage');
 const detailPage = document.getElementById('detailPage');
@@ -735,57 +565,11 @@ backLink.addEventListener('click', e => {
 const modal = document.getElementById('messageModal');
 const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
-const contactForm = document.getElementById('contactForm');
-const feedbackDiv = document.getElementById('formFeedback');
 
-openBtn.onclick = () => { modal.classList.add('active'); feedbackDiv.innerHTML = ''; }
+openBtn.onclick = () => modal.classList.add('active');
 const closeModal = () => modal.classList.remove('active');
 closeBtn.onclick = closeModal;
 modal.onclick = e => e.target === modal && closeModal();
-
-// ———— 最终稳定修复：接收邮箱 = 2356063270@qq.com ————
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  feedbackDiv.textContent = currentLang === 'zh' ? '提交中...' : 'Submitting...';
-  feedbackDiv.style.color = '#2a5298';
-
-  try {
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        access_key: "5a4e7b59-c8a1-4c8e-a8e0-a9e34b67c890",
-        to: "2356063270@qq.com",
-        subject: "SNOPOR官网新客户留言",
-        from_name: "官网表单",
-        name: userName.value,
-        email: userEmail.value,
-        phone: userPhone.value,
-        whatsapp: userWhatsapp.value,
-        message: `
-姓名：${userName.value}
-邮箱：${userEmail.value}
-电话：${userPhone.value}
-WhatsApp：${userWhatsapp.value}
-需求：${productReq.value}
-        `
-      })
-    });
-    const result = await res.json();
-    if (result.success) {
-      feedbackDiv.textContent = currentLang === 'zh' ? '✅ 提交成功！我们会尽快联系您' : '✅ Sent successfully!';
-      feedbackDiv.style.color = '#16a34a';
-      contactForm.reset();
-      setTimeout(closeModal, 2800);
-    } else {
-      feedbackDiv.textContent = currentLang === 'zh' ? '❌ 提交失败，请重试' : '❌ Failed';
-      feedbackDiv.style.color = '#dc2626';
-    }
-  } catch (err) {
-    feedbackDiv.textContent = currentLang === 'zh' ? '❌ 网络异常，请重试' : '❌ Network error';
-    feedbackDiv.style.color = '#dc2626';
-  }
-});
 
 setTimeout(() => {
     renderLang(currentLang);
