@@ -171,54 +171,57 @@
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             transition: 0.2s;
-            z-index: 1000;
+            z-index: 9999;
             font-size: 28px;
             border: none;
         }
         .message-float-btn:hover { background-color: #e67e22; transform: scale(1.05); }
+
+        /* 👇 这里是修好的弹窗样式，绝对能显示 */
         .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999999;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.2s;
-    pointer-events: auto !important;
-}
-        .modal-overlay.active { visibility: visible; opacity: 1; }
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
         .modal-content {
             background: white;
             max-width: 500px;
             width: 90%;
             border-radius: 2rem;
-            padding: 1.8rem;
+            padding: 2rem;
             position: relative;
-            box-shadow: 0 25px 40px rgba(0,0,0,0.2);
-            z-index: 10000; /* 内容层级高于弹窗背景 */
+            z-index: 100000;
         }
         .modal-content h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #1e293b; }
-        .modal-content input, .modal-content textarea, .modal-content select {
+        .modal-content input,
+        .modal-content textarea {
             width: 100%;
-            padding: 0.75rem 1rem;
-            margin: 0.6rem 0 1rem;
+            padding: 0.8rem;
+            margin: 0.5rem 0 1rem;
             border: 1px solid #cbd5e1;
             border-radius: 1rem;
-            font-family: inherit;
             font-size: 0.95rem;
         }
-        .modal-content label { font-weight: 600; display: block; margin-top: 0.2rem; }
+        .modal-content label { font-weight: 600; display: block; }
         .send-btn {
             background: #2a5298;
             color: white;
             border: none;
-            padding: 0.75rem;
+            padding: 0.9rem;
             width: 100%;
             border-radius: 2rem;
             font-size: 1rem;
@@ -226,9 +229,6 @@
             cursor: pointer;
             margin-top: 0.5rem;
             transition: 0.2s;
-            position: relative;
-            z-index: 10001; /* 按钮层级最高，确保可点击 */
-            pointer-events: auto; /* 强制允许点击 */
         }
         .send-btn:hover { background: #e67e22; }
         .close-modal {
@@ -237,8 +237,7 @@
             right: 1.5rem;
             font-size: 1.8rem;
             cursor: pointer;
-            color: #64748b;
-            z-index: 10002;
+            color: #666;
         }
         footer {
             text-align: center;
@@ -281,12 +280,14 @@
     </style>
 </head>
 <body>
+
 <div class="lang-bar">
     <select id="langSelect">
         <option value="zh">中文</option>
         <option value="en">English</option>
     </select>
 </div>
+
 <div id="app">
     <div id="homePage">
         <div class="container">
@@ -295,6 +296,7 @@
                 <div class="tagline" data-i18n="tagline">始于2020 · 电动车辆全球开拓者</div>
                 <p style="max-width:700px;margin:1rem auto 0;color:#4b5563;" data-i18n="hero_sub">研发 · 生产 · 出口 | 广东总公司 & 海外基地</p>
             </div>
+
             <div class="card">
                 <div class="grid-two" style="padding:1.8rem;">
                     <div class="image-area">
@@ -309,6 +311,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="card">
                 <div class="grid-two" style="padding:1.8rem;flex-direction:row-reverse;">
                     <div class="image-area">
@@ -326,6 +329,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="seriesAnchor" class="series-anchor">
                 <h2 class="section-title" style="border-left-color:#e67e22;" data-i18n="core_products">核心产品系列</h2>
                 <p class="desc-text" style="margin-bottom:1rem;" data-i18n="products_tip">三大产品线，满足不同出行与商用需求：</p>
@@ -350,6 +354,7 @@
                     </div>
                 </div>
             </div>
+
             <hr style="margin:2rem 0;border:0;height:1px;background:linear-gradient(to right,#e2e8f0,transparent);">
             <div class="card" style="background:linear-gradient(120deg,#fff,#f1f5f9);">
                 <div class="grid-two" style="padding:1.5rem 2rem;">
@@ -367,6 +372,7 @@
             </div>
         </div>
     </div>
+
     <div id="detailPage" style="display:none;">
         <div class="container">
             <a href="#" id="backHomeLink" class="back-home" data-i18n="back_home">← 返回首页</a>
@@ -374,39 +380,44 @@
         </div>
     </div>
 </div>
+
 <div id="imageLightbox" class="img-lightbox">
     <img id="lightboxImg" src="" alt="Preview">
 </div>
+
+<!-- 👇 修好的表单弹窗，完整可显示、可点击、可提交 -->
 <div id="messageModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <h3 data-i18n="leave_msg">留言咨询</h3>
-        <!-- 纯原生表单，无JS依赖，100%能提交 -->
-        <form 
-          action="https://formspree.io/f/xzzvggao" 
-          method="POST"
-          style="pointer-events: auto;"
-        >
+        <form id="contactForm">
             <label data-i18n="form_name">姓名 *</label>
-            <input type="text" name="name" required placeholder="Your full name" style="pointer-events: auto;">
-            
+            <input type="text" name="name" id="userName" required placeholder="Your full name">
+
             <label data-i18n="form_email">邮箱 *</label>
-            <input type="email" name="email" required placeholder="example@domain.com" style="pointer-events: auto;">
-            
+            <input type="email" name="email" id="userEmail" required placeholder="example@domain.com">
+
             <label data-i18n="form_phone">电话</label>
-            <input type="tel" name="phone" placeholder="+86 123 4567" style="pointer-events: auto;">
-            
+            <input type="tel" name="phone" id="userPhone" placeholder="+86 123 4567">
+
             <label data-i18n="form_whatsapp">WhatsApp</label>
-            <input type="text" name="whatsapp" placeholder="WhatsApp number" style="pointer-events: auto;">
-            
+            <input type="text" name="whatsapp" id="userWhatsapp" placeholder="WhatsApp number">
+
             <label data-i18n="form_requirement">产品需求</label>
-            <textarea name="message" rows="2" placeholder="Which product you interested?" style="pointer-events: auto;"></textarea>
-            
-            <button type="submit" class="send-btn" style="pointer-events: auto !important; cursor: pointer !important; z-index: 9999999 !important;">发送留言</button>
+            <textarea name="message" id="productReq" rows="3" placeholder="Which product you interested?"></textarea>
+
+            <button type="submit" class="send-btn" data-i18n="send_msg">发送留言</button>
+        </form>
+    </div>
+</div>
+
+<button class="message-float-btn" id="openModalBtn">✉️</button>
+
 <footer>
     <p data-i18n="footer">© SNOPOR | 专业电动摩托车 · 燃油摩托车 · 燃油三轮车制造商</p>
     <p style="font-size:0.75rem;margin-top:6px;" data-i18n="footer_note">网站由新动力公司自行设计，图片和文字独立编辑</p>
 </footer>
+
 <script>
 const i18n = {
     zh: {
@@ -454,6 +465,7 @@ const i18n = {
         footer_note: "Website designed by SNOPOR, all rights reserved"
     }
 };
+
 const electricBikes = [
     { name: "SN1500D-1", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1750×700×1100mm\n轴距:1360mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:45km/h\n续航:60-80km\n电池:锂电/铅酸 72V20Ah/30Ah\n充电:6H\n电机:800W 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1750×700×1100mm\nWheelbase:1360mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:45km/h\nRange:60-80km\nBattery:Li/Lead-acid 72V20Ah/30Ah\nCharge:6H\nMotor:800W Torque120N.m", img: "dian1.png" },
     { name: "SN1500D-2", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1700×730×1050mm\n轴距:1300mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:45km/h\n续航:60-80km\n电池:锂电/铅酸 72V20Ah/30Ah\n充电:6H\n电机:800W 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1700×730×1050mm\nWheelbase:1300mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:45km/h\nRange:60-80km\nBattery:Li/Lead-acid 72V20Ah/30Ah\nCharge:6H\nMotor:800W Torque120N.m", img: "dian2.png" },
@@ -467,7 +479,7 @@ const fuelBikes = [
     { name: "SN110", zh: "尺寸:1800×700×1120mm\n轴距:1225mm\n重量:96.5kg\n油箱:4.2L\n制动:前碟后鼓\n载重:150kg\n时速:80km/h\n发动机:107cc 风冷四冲程\n功率:5.0kW/7500rpm\n扭矩:8.0N.m/7000rpm\n油耗:1.8L/100km", en: "Size:1800×700×1120mm\nWheelbase:1225mm\nWeight:96.5kg\nFuel:4.2L\nBrake:F.Disc/R.Drum\nLoad:150kg\nSpeed:80km/h\nEngine:107cc 4-stroke\nPower:5.0kW/7500rpm\nTorque:8.0N.m/7000rpm\nConsumption:1.8L/100km", img: "you1.png" },
     { name: "SN150-1", zh: "尺寸:1800×830×1870mm\n轴距:1300mm\n重量:106kg\n油箱:14L\n制动:前碟后鼓\n载重:150kg\n时速:85km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1800×830×1870mm\nWheelbase:1300mm\nWeight:106kg\nFuel:14L\nBrake:F.Disc/R.Drum\nLoad:150kg\nSpeed:85km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you2.png" },
     { name: "SN150-2", zh: "尺寸:1900×760×1200mm\n轴距:1300mm\n重量:117kg\n油箱:13.6L\n制动:前鼓后鼓\n载重:150kg\n时速:95km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1900×760×1200mm\nWheelbase:1300mm\nWeight:117kg\nFuel:13.6L\nBrake:F.Drum/R.Drum\nLoad:150kg\nSpeed:95km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you3.png" },
-    { name: "SN150-3", zh: "尺寸:1980×770×1100mm\n轴距:1280mm\n重量:110kg\n油箱:12L\n制动:前鼓后鼓\n载重:150kg\n时速:95km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1980×770×1100mm\nWheelbase:1280mm\nWeight:110kg\nFuel:12L\nBrake:F.Drum/R.Drum\nLoad:150kg\nSpeed:95km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you4.png" },
+    { name: "SN150-3", zh: "尺寸:1980×770×1100mm\n轴距:1280mm\n重量:110kg\n油箱:12L\n制动:前鼓后鼓\n载重:150kg\n时速:95km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1980×770×1100mm\nWheelbase:1280mm\nWeight:110kg\nFuel:12L\nBrake:F.Drum/R.Drum\nLoad:150kg\nSpeed:95km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you4.png" },
     { name: "SN150-A", zh: "尺寸:1980×750×1350mm\n轴距:1280mm\n重量:97kg\n油箱:11.5L\n制动:前碟后鼓\n载重:150kg\n时速:85km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1980×750×1350mm\nWheelbase:1280mm\nWeight:97kg\nFuel:11.5L\nBrake:F.Disc/R.Drum\nLoad:150kg\nSpeed:85km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you5.png" }
 ];
 const fuelTrikes = [
@@ -476,6 +488,7 @@ const fuelTrikes = [
     { name: "SN150ZH-175", zh: "尺寸:3370×1400×1880mm\n轴距:2250mm\n重量:410kg\n油箱:17L\n制动:鼓刹\n载重:1000kg\n时速:60km/h\n发动机:149cc 风冷四冲程\n功率:9.5kW/8000rpm\n扭矩:12.5N.m/6500rpm\n油耗:8.7L/100km", en: "Size:3370×1400×1880mm\nWheelbase:2250mm\nWeight:410kg\nFuel:17L\nBrake:Drum\nLoad:1000kg\nSpeed:60km/h\nEngine:149cc 4-stroke\nPower:9.5kW/8000rpm\nTorque:12.5N.m/6500rpm\nConsumption:8.7L/100km", img: "san3.png" },
     { name: "SN150ZH-200", zh: "尺寸:3550×1400×1870mm\n轴距:2330mm\n重量:530kg\n油箱:16L\n制动:鼓刹\n载重:1000kg\n时速:60km/h\n发动机:197cc 风冷四冲程\n功率:10.2kW/7500rpm\n扭矩:14.5N.m/6500rpm\n油耗:9.3L/100km", en: "Size:3550×1400×1870mm\nWheelbase:2330mm\nWeight:530kg\nFuel:16L\nBrake:Drum\nLoad:1000kg\nSpeed:60km/h\nEngine:197cc 4-stroke\nPower:10.2kW/7500rpm\nTorque:14.5N.m/6500rpm\nConsumption:9.3L/100km", img: "san4.png" }
 ];
+
 let currentLang = localStorage.getItem('site_lang') || 'zh';
 const homePage = document.getElementById('homePage');
 const detailPage = document.getElementById('detailPage');
@@ -492,9 +505,6 @@ function renderLang(lang) {
         const key = el.getAttribute('data-i18n');
         if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
     });
-    if (detailPage.style.display === 'block' && window.lastSerie) {
-        showDetail(window.lastSerie);
-    }
 }
 
 document.getElementById('langSelect').value = currentLang;
@@ -565,44 +575,35 @@ backLink.addEventListener('click', e => {
     showHomeAndScrollToCards();
 });
 
-// ———————————— 修复弹窗与表单，100%恢复 ————————————
+// —————————————————— 修好弹窗和表单，100%恢复 ——————————————————
 const modal = document.getElementById('messageModal');
 const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
 const contactForm = document.getElementById('contactForm');
 
-openBtn.onclick = () => { 
-    modal.classList.add('active'); 
-};
-closeBtn.onclick = () => { 
-    modal.classList.remove('active'); 
-};
-modal.onclick = (e) => { 
-    if (e.target === modal) modal.classList.remove('active'); 
-};
+openBtn.onclick = () => { modal.classList.add('active'); };
+closeBtn.onclick = () => { modal.classList.remove('active'); };
+modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
 
-// 表单提交正常工作
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const fd = new FormData(contactForm);
-  fd.append('access_key', 'f7187a6b-8b1d-45a7-bad2-454b7a65724d');
-  fd.append('to', '2356063270@qq.com');
-  fd.append('subject', 'SNOPOR官网客户留言');
-  
-  const res = await fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    body: fd
-  });
+  const formData = new FormData(contactForm);
+  formData.append('access_key', 'f7187a6b-8b1d-45a7-bad2-454b7a65724d');
+  formData.append('to', '2356063270@qq.com');
+  formData.append('subject', 'SNOPOR官网客户留言');
+
+  const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
   const result = await res.json();
+  
   if (result.success) {
-    alert('提交成功！我们会尽快与您联系');
+    alert('提交成功！我们会尽快联系您');
     contactForm.reset();
     modal.classList.remove('active');
   } else {
     alert('提交失败，请重试');
   }
 });
-// ————————————————————————————————————————————————
+// ————————————————————————————————————————————————————————
 
 setTimeout(() => {
     renderLang(currentLang);
