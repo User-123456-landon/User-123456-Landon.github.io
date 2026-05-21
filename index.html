@@ -565,14 +565,44 @@ backLink.addEventListener('click', e => {
     showHomeAndScrollToCards();
 });
 
+// ———————————— 修复弹窗与表单，100%恢复 ————————————
 const modal = document.getElementById('messageModal');
 const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
+const contactForm = document.getElementById('contactForm');
 
-openBtn.onclick = () => modal.classList.add('active');
-const closeModal = () => modal.classList.remove('active');
-closeBtn.onclick = closeModal;
-modal.onclick = e => e.target === modal && closeModal();
+openBtn.onclick = () => { 
+    modal.classList.add('active'); 
+};
+closeBtn.onclick = () => { 
+    modal.classList.remove('active'); 
+};
+modal.onclick = (e) => { 
+    if (e.target === modal) modal.classList.remove('active'); 
+};
+
+// 表单提交正常工作
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(contactForm);
+  fd.append('access_key', 'f7187a6b-8b1d-45a7-bad2-454b7a65724d');
+  fd.append('to', '2356063270@qq.com');
+  fd.append('subject', 'SNOPOR官网客户留言');
+  
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: fd
+  });
+  const result = await res.json();
+  if (result.success) {
+    alert('提交成功！我们会尽快与您联系');
+    contactForm.reset();
+    modal.classList.remove('active');
+  } else {
+    alert('提交失败，请重试');
+  }
+});
+// ————————————————————————————————————————————————
 
 setTimeout(() => {
     renderLang(currentLang);
