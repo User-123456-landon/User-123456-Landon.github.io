@@ -492,24 +492,75 @@
     <div class="modal-content">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <h3 data-i18n="leave_msg">Leave Your Message</h3>
-        <form id="contactForm">
-            <label data-i18n="form_name">Name *</label>
-            <input type="text" name="name" id="userName" required placeholder="Your full name">
-            
-            <label data-i18n="form_email">Email *</label>
-            <input type="email" name="email" id="userEmail" required placeholder="example@domain.com">
-            
-            <label data-i18n="form_phone">Phone</label>
-            <input type="tel" name="phone" id="userPhone" placeholder="+86 123 4567">
-            
-            <label data-i18n="form_whatsapp">WhatsApp</label>
-            <input type="text" name="whatsapp" id="userWhatsapp" placeholder="WhatsApp number">
-            
-            <label data-i18n="form_requirement">Product requirement</label>
-            <textarea name="message" id="productReq" rows="2" placeholder="Which product you interested?"></textarea>
-            
-            <button type="submit" class="send-btn" data-i18n="send_msg">Send Message</button>
-        </form>
+        <form 
+  action="https://formspree.io/f/xzzvggao" 
+  method="POST"
+  style="display: grid; gap: 0.8rem; width: 100%;"
+>
+  <label style="font-weight: 600; margin-top: 0.2rem;">姓名 *</label>
+  <input 
+    type="text" 
+    name="name" 
+    required 
+    placeholder="Your full name"
+    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
+  >
+
+  <label style="font-weight: 600; margin-top: 0.2rem;">邮箱 *</label>
+  <input 
+    type="email" 
+    name="email" 
+    required 
+    placeholder="example@domain.com"
+    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
+  >
+
+  <label style="font-weight: 600; margin-top: 0.2rem;">电话</label>
+  <input 
+    type="tel" 
+    name="phone" 
+    placeholder="+86 123 4567"
+    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
+  >
+
+  <label style="font-weight: 600; margin-top: 0.2rem;">WhatsApp</label>
+  <input 
+    type="text" 
+    name="whatsapp" 
+    placeholder="WhatsApp number"
+    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
+  >
+
+  <label style="font-weight: 600; margin-top: 0.2rem;">产品需求</label>
+  <textarea 
+    name="message" 
+    rows="2" 
+    placeholder="Which product you interested?"
+    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 1rem; font-family: inherit; font-size: 0.95rem;"
+  ></textarea>
+
+  <button 
+    type="submit" 
+    style="
+      background: #2a5298; 
+      color: white; 
+      border: none; 
+      padding: 0.75rem; 
+      width: 100%; 
+      border-radius: 2rem; 
+      font-size: 1rem; 
+      font-weight: bold; 
+      cursor: pointer; 
+      margin-top: 0.5rem;
+      transition: 0.2s;
+    "
+    onmouseover="this.style.background='#e67e22'"
+    onmouseout="this.style.background='#2a5298'"
+  >
+    发送留言
+  </button>
+</form>
+      
         <div id="formFeedback" style="font-size:0.8rem;margin-top:0.5rem;color:#16a34a;"></div>
     </div>
 </div>
