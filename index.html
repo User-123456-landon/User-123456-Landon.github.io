@@ -21,7 +21,6 @@
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
-
         .lang-bar {
             position: fixed;
             top: 1rem;
@@ -49,7 +48,6 @@
             border-radius: 1rem;
             padding: 0.4rem;
         }
-
         .hero {
             text-align: center;
             margin-bottom: 3rem;
@@ -351,7 +349,7 @@
         .img-lightbox {
             position: fixed;
             top: 0;
-            left: 0;
+            the left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.9);
@@ -394,14 +392,12 @@
     </style>
 </head>
 <body>
-
 <div class="lang-bar">
     <select id="langSelect">
         <option value="zh">中文</option>
         <option value="en">English</option>
     </select>
 </div>
-
 <div id="app">
     <div id="homePage">
         <div class="container">
@@ -410,7 +406,6 @@
                 <div class="tagline" data-i18n="tagline">始于2020 · 电动车辆全球开拓者</div>
                 <p style="max-width: 700px; margin: 1rem auto 0; color: #4b5563;" data-i18n="hero_sub">研发 · 生产 · 出口 | 广东总公司 & 海外基地</p>
             </div>
-
             <div class="card">
                 <div class="grid-two" style="padding: 1.8rem;">
                     <div class="image-area">
@@ -425,7 +420,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="grid-two" style="padding: 1.8rem; flex-direction: row-reverse;">
                     <div class="image-area">
@@ -443,7 +437,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="seriesAnchor" class="series-anchor">
                 <h2 class="section-title" style="border-left-color: #e67e22;" data-i18n="core_products">核心产品系列</h2>
                 <p class="desc-text" style="margin-bottom: 1rem;" data-i18n="products_tip">三大产品线，满足不同出行与商用需求：</p>
@@ -468,7 +461,6 @@
                     </div>
                 </div>
             </div>
-
             <hr style="margin: 2rem 0; border:0; height:1px; background: linear-gradient(to right, #e2e8f0, transparent);">
             <div class="card" style="background: linear-gradient(120deg, #fff, #f1f5f9);">
                 <div class="grid-two" style="padding: 1.5rem 2rem;">
@@ -486,7 +478,6 @@
             </div>
         </div>
     </div>
-
     <div id="detailPage" style="display:none;">
         <div class="container">
             <a href="#" id="backHomeLink" class="back-home" data-i18n="back_home">← 返回首页</a>
@@ -494,38 +485,34 @@
         </div>
     </div>
 </div>
-
 <div id="imageLightbox" class="img-lightbox">
     <img id="lightboxImg" src="" alt="Preview">
 </div>
-
 <div id="messageModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <h3 data-i18n="leave_msg">Leave Your Message</h3>
         <form id="contactForm">
             <label data-i18n="form_name">Name *</label>
-            <input type="text" id="userName" required placeholder="Your full name">
+            <input type="text" name="name" id="userName" required placeholder="Your full name">
             <label data-i18n="form_email">Email *</label>
-            <input type="email" id="userEmail" required placeholder="example@domain.com">
+            <input type="email" name="email" id="userEmail" required placeholder="example@domain.com">
             <label data-i18n="form_phone">Phone</label>
-            <input type="tel" id="userPhone" placeholder="+86 123 4567">
+            <input type="tel" name="phone" id="userPhone" placeholder="+86 123 4567">
             <label data-i18n="form_whatsapp">WhatsApp</label>
-            <input type="text" id="userWhatsapp" placeholder="WhatsApp number">
+            <input type="text" name="whatsapp" id="userWhatsapp" placeholder="WhatsApp number">
             <label data-i18n="form_requirement">Product requirement</label>
-            <textarea id="productReq" rows="2" placeholder="Which product you interested?"></textarea>
+            <textarea name="message" id="productReq" rows="2" placeholder="Which product you interested?"></textarea>
             <button type="submit" class="send-btn" data-i18n="send_msg">Send Message</button>
         </form>
         <div id="formFeedback" style="font-size:0.8rem; margin-top:0.5rem; color:#16a34a;"></div>
     </div>
 </div>
 <button class="message-float-btn" id="openModalBtn">✉️</button>
-
 <footer>
     <p data-i18n="footer">© SNOPOR | 专业电动摩托车 · 燃油摩托车 · 燃油三轮车制造商</p>
     <p style="font-size:0.75rem; margin-top:6px;" data-i18n="footer_note">网站由新动力公司自行设计，图片和文字独立编辑</p>
 </footer>
-
 <script>
 const i18n = {
     zh: {
@@ -573,32 +560,28 @@ const i18n = {
         footer_note: "Website designed by SNOPOR, all rights reserved"
     }
 };
-
 const electricBikes = [
     { name: "SN1500D-1", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1750×700×1100mm\n轴距:1360mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:45km/h\n续航:60-80km\n电池:锂电/铅酸 72V20Ah/30Ah\n充电:6H\n电机:800W 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1750×700×1100mm\nWheelbase:1360mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:45km/h\nRange:60-80km\nBattery:Li/Lead-acid 72V20Ah/30Ah\nCharge:6H\nMotor:800W Torque120N.m", img: "dian1.png" },
     { name: "SN1500D-2", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1700×730×1050mm\n轴距:1300mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:45km/h\n续航:60-80km\n电池:锂电/铅酸 72V20Ah/30Ah\n充电:6H\n电机:800W 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1700×730×1050mm\nWheelbase:1300mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:45km/h\nRange:60-80km\nBattery:Li/Lead-acid 72V20Ah/30Ah\nCharge:6H\nMotor:800W Torque120N.m", img: "dian2.png" },
     { name: "SN1500D-3", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1800×770×1150mm\n轴距:1330mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:65km/h\n续航:60-80km\n电池:铅酸72V23Ah\n充电:6H\n电机:1.2kW 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1800×770×1150mm\nWheelbase:1330mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:65km/h\nRange:60-80km\nBattery:Lead-acid72V23Ah\nCharge:6H\nMotor:1.2kW Torque120N.m", img: "dian3.png" },
     { name: "SN1500D-4", zh: "配置方案:轮毂电机+单电池\n整车尺寸:1750×810×1110mm\n轴距:1300mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:45km/h\n续航:60-80km\n电池:锂电/铅酸72V20Ah/30Ah\n充电:6H\n电机:800W 扭矩120N.m", en: "Motor: Hub motor + single battery\nSize:1750×810×1110mm\nWheelbase:1300mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:45km/h\nRange:60-80km\nBattery:Li/Lead-acid72V20Ah/30Ah\nCharge:6H\nMotor:800W Torque120N.m", img: "dian4.png" },
     { name: "SN3000D-1", zh: "配置方案:中置电机+快速换电\n整车尺寸:2000×830×1200mm\n轴距:1390mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:100km/h\n续航:100-120km\n电池:铁锂72V40Ah\n充电:6H\n电机:3kW 扭矩350N.m", en: "Motor: Mid-drive + quick swap\nSize:2000×830×1200mm\nWheelbase:1390mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:100km/h\nRange:100-120km\nBattery:LFP72V40Ah\nCharge:6H\nMotor:3kW Torque350N.m", img: "dian5.png" },
-    { name: "SN3000D-2", zh: "配置方案:轮毂电机+快速换电\n整车尺寸:2000×770×1150mm\n轴距:1428mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:80km/h\n续航:100-120km\n电池:铁锂72V40Ah\n充电:6H\n电机:3kW 扭矩150N.m", en: "Motor: Hub motor + quick swap\nSize:2000×770×1150mm\nWheelbase:1428mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:80km/h\nRange:100-120km\nBattery:LFP72V40Ah\nCharge:6H\nMotor:3kW Torque150N.m", img: "dian6.png" },
+    { name: "SN3000D-2", zh: "配置方案:轮毂电机+快速换电\n整车尺寸:2000×770×1150mm\n轴距:1428mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:80km/h\n续航:100-120km\n电池:铁锂72V40Ah\n充电:6H\nMotor:3kW Torque150N.m", en: "Motor: Hub motor + quick swap\nSize:2000×770×1150mm\nWheelbase:1428mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:80km/h\nRange:100-120km\nBattery:LFP72V40Ah\nCharge:6H\nMotor:3kW Torque150N.m", img: "dian6.png" },
     { name: "SN3000D-3", zh: "配置方案:中置电机+快速换电\n整车尺寸:1550×790×1060mm\n轴距:1320mm\n载重:150kg\n模式:节能/舒适/运动\n最高时速:80km/h\n续航:80km\n电池:固态72V30Ah\n充电:6H\n电机:3kW 扭矩305N.m", en: "Motor: Mid-drive + quick swap\nSize:1550×790×1060mm\nWheelbase:1320mm\nLoad:150kg\nMode:Eco/Comfort/Sport\nSpeed:80km/h\nRange:80km\nBattery:Solid72V30Ah\nCharge:6H\nMotor:3kW Torque305N.m", img: "dian7.png" }
 ];
-
 const fuelBikes = [
     { name: "SN110", zh: "尺寸:1800×700×1120mm\n轴距:1225mm\n重量:96.5kg\n油箱:4.2L\n制动:前碟后鼓\n载重:150kg\n时速:80km/h\n发动机:107cc 风冷四冲程\n功率:5.0kW/7500rpm\n扭矩:8.0N.m/7000rpm\n油耗:1.8L/100km", en: "Size:1800×700×1120mm\nWheelbase:1225mm\nWeight:96.5kg\nFuel:4.2L\nBrake:F.Disc/R.Drum\nLoad:150kg\nSpeed:80km/h\nEngine:107cc 4-stroke\nPower:5.0kW/7500rpm\nTorque:8.0N.m/7000rpm\nConsumption:1.8L/100km", img: "you1.png" },
     { name: "SN150-1", zh: "尺寸:1800×830×1870mm\n轴距:1300mm\n重量:106kg\n油箱:14L\n制动:前碟后鼓\n载重:150kg\n时速:85km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1800×830×1870mm\nWheelbase:1300mm\nWeight:106kg\nFuel:14L\nBrake:F.Disc/R.Drum\nLoad:150kg\nSpeed:85km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you2.png" },
-    { name: "SN150-2", zh: "尺寸:1900×760×1200mm\n轴距:1300mm\n重量:117kg\n油箱:13.6L\n制动:前鼓后鼓\n载重:150kg\n时速:95km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1900×760×1200mm\nWheelbase:1300mm\nWeight:117kg\nFuel:13.6L\nBrake:F.Drum/R.Drum\nLoad:150kg\nSpeed:95km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you3.png" },
+    { name: "SN150-2", zh: "尺寸:1900×760×1200mm\n轴距:1300mm\n重量:117kg\n油箱:13.6L\n制动:前鼓后鼓\n载重:150kg\n时速:95km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1900×760×1200mm\nWheelbase:1300mm\nWeight:117kg\nFuel:13.6L\nBrake:F.Drum/R.Drum\nLoad:150kg\nSpeed:95km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you3.png" },
     { name: "SN150-3", zh: "尺寸:1980×770×1100mm\n轴距:1280mm\n重量:110kg\n油箱:12L\n制动:前鼓后鼓\n载重:150kg\n时速:95km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1980×770×1100mm\nWheelbase:1280mm\nWeight:110kg\nFuel:12L\nBrake:F.Drum/R.Drum\nLoad:150kg\nSpeed:95km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you4.png" },
     { name: "SN150-A", zh: "尺寸:1980×750×1350mm\n轴距:1280mm\n重量:97kg\n油箱:11.5L\n制动:前碟后鼓\n载重:150kg\n时速:85km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:2.2L/100km", en: "Size:1980×750×1350mm\nWheelbase:1280mm\nWeight:97kg\nFuel:11.5L\nBrake:F.Disc/R.Drum\nLoad:150kg\nSpeed:85km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:2.2L/100km", img: "you5.png" }
 ];
-
 const fuelTrikes = [
     { name: "SN150ZH-20A", zh: "尺寸:3100×1100×1380mm\n轴距:2130mm\n重量:330kg\n油箱:14L\n制动:鼓刹\n载重:800kg\n时速:60km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:8.0L/100km", en: "Size:3100×1100×1380mm\nWheelbase:2130mm\nWeight:330kg\nFuel:14L\nBrake:Drum\nLoad:800kg\nSpeed:60km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:8.0L/100km", img: "san1.png" },
     { name: "SN150ZH-20B", zh: "尺寸:3320×1350×1520mm\n轴距:2330mm\n重量:370kg\n油箱:17L\n制动:鼓刹\n载重:800kg\n时速:60km/h\n发动机:149cc 风冷四冲程\n功率:8.5kW/8500rpm\n扭矩:10.5N.m/6500rpm\n油耗:8.0L/100km", en: "Size:3320×1350×1520mm\nWheelbase:2330mm\nWeight:370kg\nFuel:17L\nBrake:Drum\nLoad:800kg\nSpeed:60km/h\nEngine:149cc 4-stroke\nPower:8.5kW/8500rpm\nTorque:10.5N.m/6500rpm\nConsumption:8.0L/100km", img: "san2.png" },
     { name: "SN150ZH-175", zh: "尺寸:3370×1400×1880mm\n轴距:2250mm\n重量:410kg\n油箱:17L\n制动:鼓刹\n载重:1000kg\n时速:60km/h\n发动机:149cc 风冷四冲程\n功率:9.5kW/8000rpm\n扭矩:12.5N.m/6500rpm\n油耗:8.7L/100km", en: "Size:3370×1400×1880mm\nWheelbase:2250mm\nWeight:410kg\nFuel:17L\nBrake:Drum\nLoad:1000kg\nSpeed:60km/h\nEngine:149cc 4-stroke\nPower:9.5kW/8000rpm\nTorque:12.5N.m/6500rpm\nConsumption:8.7L/100km", img: "san3.png" },
     { name: "SN150ZH-200", zh: "尺寸:3550×1400×1870mm\n轴距:2330mm\n重量:530kg\n油箱:16L\n制动:鼓刹\n载重:1000kg\n时速:60km/h\n发动机:197cc 风冷四冲程\n功率:10.2kW/7500rpm\n扭矩:14.5N.m/6500rpm\n油耗:9.3L/100km", en: "Size:3550×1400×1870mm\nWheelbase:2330mm\nWeight:530kg\nFuel:16L\nBrake:Drum\nLoad:1000kg\nSpeed:60km/h\nEngine:197cc 4-stroke\nPower:10.2kW/7500rpm\nTorque:14.5N.m/6500rpm\nConsumption:9.3L/100km", img: "san4.png" }
 ];
-
 let currentLang = localStorage.getItem('site_lang') || 'zh';
 const homePage = document.getElementById('homePage');
 const detailPage = document.getElementById('detailPage');
@@ -607,7 +590,6 @@ const backLink = document.getElementById('backHomeLink');
 const lightbox = document.getElementById('imageLightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 window.lastSerie = null;
-
 function renderLang(lang) {
     currentLang = lang;
     localStorage.setItem('site_lang', lang);
@@ -619,12 +601,10 @@ function renderLang(lang) {
         showDetail(window.lastSerie);
     }
 }
-
 document.getElementById('langSelect').value = currentLang;
 document.getElementById('langSelect').addEventListener('change', e => {
     renderLang(e.target.value);
 });
-
 function getProductTitle(t) {
     if (currentLang === 'zh') {
         if (t === 'electric') return '⚡ 电动摩托车系列 (7款)';
@@ -637,7 +617,6 @@ function getProductTitle(t) {
     }
     return '';
 }
-
 function bindImageClick() {
     document.querySelectorAll('.series-card img, .product-item img, .custom-img').forEach(img => {
         img.removeEventListener('click', openLightbox);
@@ -649,7 +628,6 @@ function openLightbox() {
     lightbox.classList.add('active');
 }
 lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
-
 function showHomeAndScrollToCards() {
     homePage.style.display = 'block';
     detailPage.style.display = 'none';
@@ -657,7 +635,6 @@ function showHomeAndScrollToCards() {
     a ? a.scrollIntoView({ behavior: 'smooth' }) : window.scrollTo(0,0);
     setTimeout(bindImageClick, 100);
 }
-
 function showDetail(serieType) {
     window.lastSerie = serieType;
     const title = getProductTitle(serieType);
@@ -665,7 +642,6 @@ function showDetail(serieType) {
     if (serieType === 'electric') list = electricBikes;
     else if (serieType === 'fuel-moto') list = fuelBikes;
     else if (serieType === 'fuel-trike') list = fuelTrikes;
-
     let html = `<h2 class="detail-title">${title}</h2><div class="product-list">`;
     list.forEach(item => {
         const desc = currentLang === 'zh' ? item.zh : item.en;
@@ -678,75 +654,53 @@ function showDetail(serieType) {
     window.scrollTo(0,0);
     setTimeout(bindImageClick, 50);
 }
-
 document.querySelectorAll('.series-card').forEach(card => {
     card.addEventListener('click', () => showDetail(card.dataset.serie));
 });
-
 backLink.addEventListener('click', e => {
     e.preventDefault();
     showHomeAndScrollToCards();
 });
-
 const modal = document.getElementById('messageModal');
 const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
 const contactForm = document.getElementById('contactForm');
 const feedbackDiv = document.getElementById('formFeedback');
-
 openBtn.onclick = () => { modal.classList.add('active'); feedbackDiv.innerHTML = ''; }
 const closeModal = () => modal.classList.remove('active');
 closeBtn.onclick = closeModal;
 modal.onclick = e => e.target === modal && closeModal();
 
-// ———— 表单提交到你的QQ邮箱：2356063270@qq.com ————
+// ———— 已修复：稳定可用表单提交 ————
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  feedbackDiv.innerHTML = currentLang === 'zh' ? "提交中..." : "Submitting...";
-  feedbackDiv.style.color = "#2a5298";
-
-  const data = {
-    name: userName.value,
-    email: userEmail.value,
-    phone: userPhone.value,
-    whatsapp: userWhatsapp.value,
-    requirement: productReq.value
-  };
+  feedbackDiv.textContent = currentLang === 'zh' ? '提交中...' : 'Submitting...';
+  feedbackDiv.style.color = '#2a5298';
+  
+  const formData = new FormData(contactForm);
+  formData.append('access_key', 'f7187a6b-8b1d-45a7-bad2-454b7a65724d');
+  formData.append('subject', 'SNOPOR官网客户留言');
+  formData.append('from_name', '官网表单');
+  formData.append('to', '2356063270@qq.com');
 
   try {
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        access_key: "5a4e7b59-c8a1-4c8e-a8e0-a9e34b67c890",
-        to: "2356063270@qq.com",
-        subject: "SNOPOR官网新客户留言",
-        from_name: "官网表单",
-        message: `
-姓名：${data.name}
-邮箱：${data.email}
-电话：${data.phone}
-WhatsApp：${data.whatsapp}
-需求：${data.requirement}
-        `
-      })
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
     });
-
     const result = await res.json();
     if (result.success) {
-      feedbackDiv.innerHTML = currentLang === 'zh' 
-        ? "✅ 提交成功！我们会尽快联系您" 
-        : "✅ Sent successfully!";
-      feedbackDiv.style.color = "#16a34a";
+      feedbackDiv.textContent = currentLang === 'zh' ? '✅ 提交成功！我们会尽快联系您' : '✅ Sent successfully!';
+      feedbackDiv.style.color = '#16a34a';
       contactForm.reset();
       setTimeout(closeModal, 2800);
     } else {
-      feedbackDiv.innerHTML = currentLang === 'zh' ? "❌ 提交失败，请重试" : "❌ Failed";
-      feedbackDiv.style.color = "#dc2626";
+      feedbackDiv.textContent = currentLang === 'zh' ? '❌ 提交失败，请重试' : '❌ Failed';
+      feedbackDiv.style.color = '#dc2626';
     }
   } catch (err) {
-    feedbackDiv.innerHTML = currentLang === 'zh' ? "❌ 网络异常，请重试" : "❌ Network error";
-    feedbackDiv.style.color = "#dc2626";
+    feedbackDiv.textContent = currentLang === 'zh' ? '❌ 网络异常，请重试' : '❌ Network error';
+    feedbackDiv.style.color = '#dc2626';
   }
 });
 
