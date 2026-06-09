@@ -990,14 +990,14 @@
                 ],
                 performance: [
                     {label: "电机类型", en: "Motor Type", value: "轮毂电机"},
-                    {label: "额定功率", en: "Power(Rated)", value: "1200W"},
-                    {label: "峰值功率", en: "Power(Peak)", value: "2400W"},
-                    {label: "最高时速", en: "Speed", value: "65 KM/H"},
+                    {label: "额定功率", en: "Power(Rated)", value: "1200W/500rpm"},
+                    {label: "峰值功率", en: "Power(Peak)", value: "2400W/550rpm"},
+                    {label: "最高时速", en: "Speed", value: "65 km/h"},
                     {label: "爬坡能力", en: "Gradeability", value: "15%"}
                 ],
                 battery: [
                     {label: "电池容量", en: "Battery Capacity", value: "72V30AH"},
-                    {label: "电芯类型", en: "Cell type", value: "NCM"},
+                    {label: "电池类型", en: "Battery Type", value: "Lead-acid/Li-ion"},
                     {label: "充电时间", en: "Charging Time", value: "6H"}
                 ],
                 packing: [
@@ -1032,14 +1032,14 @@
                 ],
                 performance: [
                     {label: "电机类型", en: "Motor Type", value: "中置电机"},
-                    {label: "额定功率", en: "Power(Rated)", value: "3000W"},
-                    {label: "峰值功率", en: "Power(Peak)", value: "6500W"},
-                    {label: "最高时速", en: "Speed", value: "80 KM/H"},
+                    {label: "额定功率", en: "Power(Rated)", value: "3000W/6000~8000rpm"},
+                    {label: "峰值功率", en: "Power(Peak)", value: "6500W/6000rpm"},
+                    {label: "最高时速", en: "Speed", value: "80 km/h"},
                     {label: "爬坡能力", en: "Gradeability", value: "30%"}
                 ],
                 battery: [
                     {label: "电池容量", en: "Battery Capacity", value: "72V54AH"},
-                    {label: "电芯类型", en: "Cell type", value: "LFP"},
+                    {label: "电池类型", en: "Battery Type", value: "LiFePO4"},
                     {label: "充电时间", en: "Charging Time", value: "6H"}
                 ],
                 packing: [
@@ -1071,14 +1071,14 @@
                 ],
                 performance: [
                     {label: "电机类型", en: "Motor Type", value: "轮毂电机"},
-                    {label: "额定功率", en: "Power(Rated)", value: "3000W"},
-                    {label: "峰值功率", en: "Power(Peak)", value: "6000W"},
-                    {label: "最高时速", en: "Speed", value: "80 KM/H"},
+                    {label: "额定功率", en: "Power(Rated)", value: "3000W/550~650rpm"},
+                    {label: "峰值功率", en: "Power(Peak)", value: "6000W/750~850rpm"},
+                    {label: "最高时速", en: "Speed", value: "80 km/h"},
                     {label: "爬坡能力", en: "Gradeability", value: "17%"}
                 ],
                 battery: [
                     {label: "电池容量", en: "Battery Capacity", value: "72V30AH"},
-                    {label: "电芯类型", en: "Cell type", value: "LFP"},
+                    {label: "电池类型", en: "Battery Type", value: "LiFePO4"},
                     {label: "充电时间", en: "Charging Time", value: "6H"}
                 ],
                 packing: [
@@ -1113,12 +1113,12 @@
                     {label: "电机类型", en: "Motor Type", value: "中置电机"},
                     {label: "额定功率", en: "Power(Rated)", value: "3000W"},
                     {label: "峰值功率", en: "Power(Peak)", value: "6000W"},
-                    {label: "最高时速", en: "Speed", value: "80 KM/H"},
+                    {label: "最高时速", en: "Speed", value: "80 km/h"},
                     {label: "爬坡能力", en: "Gradeability", value: "45%"}
                 ],
                 battery: [
                     {label: "电池容量", en: "Battery Capacity", value: "72V30AH"},
-                    {label: "电芯类型", en: "Cell type", value: "NCM"},
+                    {label: "电池类型", en: "Battery Type", value: "Hybrid Solid-Liquid Battery"},
                     {label: "充电时间", en: "Charging Time", value: "6H"}
                 ],
                 packing: [
@@ -1532,31 +1532,29 @@
                 maxSpeed: "-",
                 range: "-",
                 ratedPower: "300 W",
-                peakPower: "500 W",
-                chargingTime: "8h",
+                peakPower: "-",
+                chargingTime: "-",
                 colorText: "白",
                 basicInfo: [
-                    {label: "型号", en: "Model No.", value: "Snopor 1kwh"},
+                   
                     {label: "产品名称", en: "Model Name", value: "Snopor 1kwh"},
-                    {label: "容量", en: "Capacity", value: "1kWh"},
-                    {label: "尺寸", en: "Dimension", value: "350*250*300 MM"},
+                    {label: "容量", en: "Capacity", value: "1004.8Wh"},
+                    {label: "尺寸", en: "Dimension", value: "210*185*208.5 MM"},
                     {label: "重量", en: "Weight", value: "8.5 KG"}
                 ],
                 performance: [
-                    {label: "额定输出功率", en: "Rated Output Power", value: "300W"},
-                    {label: "峰值输出功率", en: "Peak Output Power", value: "12 00W"},
-                    {label: "输出端口", en: "Output Ports", value: "AC*2, USB*4, DC*2"},
-                    {label: "充电方式", en: "Charging Methods", value: "太阳能"},
-                    {label: "循环寿命", en: "Cycle Life", value: "8000次"}
+                    {label: "交流输入", en: "AC Input", value: "90V~280V,45~65Hz,350W"},
+                    {label: "输入DC（PV）", en: "DC PV Input", value: "12V~60Vdc,Max:200W"},
+                    {label: "交流输出", en: "AC Output", value: "Max:300W"}
                 ],
                 battery: [
-                    {label: "电池类型", en: "Battery Type", value: "LFP"},
-                    {label: "充电时间", en: "Charging Time", value: "8H"},
-                    {label: "防护等级", en: "IP Rating", value: "IP54"}
+                    {label: "电池类型", en: "Battery Type", value: "LiFePO4"},
+                   {label: "循环寿命", en: "Cycle Life", value: "8000 cycles"},
+                    {label: "防护等级", en: "IP Rating", value: "P20"}
                 ],
                 packing: [
-                    {label: "包装尺寸", en: "Packing Size", value: "185*210*208.5 MM"},
-                    {label: "每箱数量", en: "Quantity per Box", value: "1 PCS"}
+                    {label: "包装尺寸", en: "Packing Size", value: "540*355*300 MM"},
+                    {label: "每箱数量", en: "Quantity per Box", value: "2 PCS"}
                 ]
             },
             "snopor-2kwh": {
@@ -1569,31 +1567,29 @@
                 maxSpeed: "-",
                 range: "-",
                 ratedPower: "1200 W",
-                peakPower: "2000 W",
-                chargingTime: "12 h",
+                peakPower: "-",
+                chargingTime: "-",
                 colorText: "白",
                 basicInfo: [
-                    {label: "型号", en: "Model No.", value: "Snopor 2kwh"},
                     {label: "产品名称", en: "Model Name", value: "Snopor 2kwh"},
-                    {label: "容量", en: "Capacity", value: "2kWh"},
+                    {label: "容量", en: "Capacity", value: "2009.6Wh"},
                     {label: "尺寸", en: "Dimension", value: "252*226*331 MM"},
                     {label: "重量", en: "Weight", value: "16.8 KG"}
                 ],
                 performance: [
-                    {label: "额定输出功率", en: "Rated Output Power", value: "1200W"},
-                    {label: "峰值输出功率", en: "Peak Output Power", value: "2000W"},
-                    {label: "输出端口", en: "Output Ports", value: "AC*4, USB*6, DC*3"},
-                    {label: "充电方式", en: "Charging Methods", value: "太阳能"},
-                    {label: "循环寿命", en: "Cycle Life", value: "8000次"}
+                    {label: "交流输入", en: "AC Input", value: "90V~280V,45~65Hz,1200W"},
+                    {label: "输入DC（PV）", en: "DC PV Input", value: "12V~60Vdc,Max:600W"},
+                    {label: "交流输出", en: "AC Output", value: "Max:1200W"}
+
                 ],
                 battery: [
-                    {label: "电池类型", en: "Battery Type", value: "LFP"},
-                    {label: "充电时间", en: "Charging Time", value: "12"},
-                    {label: "防护等级", en: "IP Rating", value: "IP54"}
+                    {label: "电池类型", en: "Battery Type", value: "LiFePO4"},
+                    {label: "循环寿命", en: "Cycle Life", value: "8000次"},
+                    {label: "防护等级", en: "IP Rating", value: "P20"}
                 ],
                 packing: [
-                    {label: "包装尺寸", en: "Packing Size", value: "260*235*340 MM"},
-                    {label: "每箱数量", en: "Quantity per Box", value: "1 PCS"}
+                    {label: "包装尺寸", en: "Packing Size", value: "640*405*430 MM"},
+                    {label: "每箱数量", en: "Quantity per Box", value: "2 PCS"}
                 ]
             }
         };
