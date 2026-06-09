@@ -246,7 +246,6 @@
                     </div>
                     
                     <div class="mt-16">
-
                     </div>
                 </div>
             </section>
@@ -514,6 +513,7 @@
                                     <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom view-detail-btn" data-en="View Details">查看详情</a>
                                 </div>
                             </div>
+                            
                             <!-- 太阳能产品3 Snopor 1kwh -->
                             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-custom product-card" data-product-id="snopor-1kwh">
                                 <img src="1kw.jpg" alt="Snopor 1kwh" class="w-full h-60 object-cover">
@@ -523,6 +523,7 @@
                                     <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom view-detail-btn" data-en="View Details">查看详情</a>
                                 </div>
                             </div>
+                            
                             <!-- 太阳能产品4 Snopor 2kwh -->
                             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-custom product-card" data-product-id="snopor-2kwh">
                                 <img src="2kw.jpg" alt="Snopor 2kwh" class="w-full h-60 object-cover">
@@ -971,7 +972,7 @@
                 desc: "时尚轻便的电动滑板车，适合城市日常通勤，续航持久，操控灵活。",
                 mainImage: "dian3.png",
                 colors: [
-                    {name: "白色", en: "Write", color: "#ffffff", image: "dian3.png"},
+                    {name: "白色", en: "White", color: "#ffffff", image: "dian3.png"},
                     {name: "蓝色", en: "Blue", color: "#2563eb", image: "dian3l.jpg"},
                     {name: "黑色", en: "Black", color: "#000000", image: "dian3b.jpg"}
                 ],
@@ -1580,7 +1581,6 @@
                     {label: "交流输入", en: "AC Input", value: "90V~280V,45~65Hz,1200W"},
                     {label: "输入DC（PV）", en: "DC PV Input", value: "12V~60Vdc,Max:600W"},
                     {label: "交流输出", en: "AC Output", value: "Max:1200W"}
-
                 ],
                 battery: [
                     {label: "电池类型", en: "Battery Type", value: "LiFePO4"},
@@ -1596,6 +1596,14 @@
 
         // ==================== 全局变量 ====================
         let currentProductId = null;
+        let currentLang = 'zh'; // 默认中文
+
+        // ==================== 初始化：保存所有静态元素的中文文本 ====================
+        document.querySelectorAll('[data-en]').forEach(element => {
+            if (!element.hasAttribute('data-zh')) {
+                element.setAttribute('data-zh', element.textContent.trim());
+            }
+        });
 
         // ==================== 原有功能代码 ====================
         // 移动端菜单切换
@@ -1840,31 +1848,31 @@
                 colorOptionsContainer.parentElement.style.display = 'none';
             }
             
-            // 生成基本信息表格
+            // 生成基本信息表格（添加data-zh和data-en属性）
             const basicInfoTable = document.getElementById('detail-basic-info');
             basicInfoTable.innerHTML = '';
             product.basicInfo.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td class="border border-gray-300 px-4 py-3 font-medium" data-en="${item.en}">${item.label}</td>
+                    <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}">${item.label}</td>
                     <td class="border border-gray-300 px-4 py-3">${item.value}</td>
                 `;
                 basicInfoTable.appendChild(row);
             });
             
-            // 生成性能参数表格
+            // 生成性能参数表格（添加data-zh和data-en属性）
             const performanceTable = document.getElementById('detail-performance');
             performanceTable.innerHTML = '';
             product.performance.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td class="border border-gray-300 px-4 py-3 font-medium" data-en="${item.en}">${item.label}</td>
+                    <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}">${item.label}</td>
                     <td class="border border-gray-300 px-4 py-3">${item.value}</td>
                 `;
                 performanceTable.appendChild(row);
             });
             
-            // 生成电池参数表格（如果有）
+            // 生成电池参数表格（添加data-zh和data-en属性）
             const batteryTable = document.getElementById('detail-battery-table');
             const batteryTableBody = document.getElementById('detail-battery');
             if (product.battery && product.battery.length > 0) {
@@ -1873,7 +1881,7 @@
                 product.battery.forEach(item => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td class="border border-gray-300 px-4 py-3 font-medium" data-en="${item.en}">${item.label}</td>
+                        <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}">${item.label}</td>
                         <td class="border border-gray-300 px-4 py-3">${item.value}</td>
                     `;
                     batteryTableBody.appendChild(row);
@@ -1882,17 +1890,20 @@
                 batteryTable.style.display = 'none';
             }
             
-            // 生成包装信息表格
+            // 生成包装信息表格（添加data-zh和data-en属性）
             const packingTable = document.getElementById('detail-packing');
             packingTable.innerHTML = '';
             product.packing.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td class="border border-gray-300 px-4 py-3 font-medium" data-en="${item.en}">${item.label}</td>
+                    <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}">${item.label}</td>
                     <td class="border border-gray-300 px-4 py-3">${item.value}</td>
                 `;
                 packingTable.appendChild(row);
             });
+
+            // 切换到产品详情页后，立即同步当前语言
+            updateLanguage();
             
             // 切换到产品详情页
             switchPage('product-detail');
@@ -1907,42 +1918,37 @@
                 loadProductDetail(productId);
             });
         });
-        
-        // ==================== 原有功能代码继续 ====================
-        // 中英文切换功能
+
+        // ==================== 修复：中英文切换功能（关键修复：添加data-前缀） ====================
         const langToggle = document.getElementById('lang-toggle');
         const langToggleMobile = document.getElementById('lang-toggle-mobile');
         const langText = document.getElementById('lang-text');
         const langTextMobile = document.getElementById('lang-text-mobile');
-        let currentLang = 'zh'; // 默认中文
-        
-        function toggleLanguage() {
-            if (currentLang === 'zh') {
-                // 切换到英文
-                document.querySelectorAll('[data-en]').forEach(element => {
-                    const enText = element.getAttribute('data-en');
-                    if (enText) {
-                        element.textContent = enText;
-                    }
-                });
-                langText.textContent = '中文';
-                langTextMobile.textContent = '中文';
-                document.documentElement.lang = 'en';
-                currentLang = 'en';
-            } else {
-                // 切换到中文
-                document.querySelectorAll('[data-en]').forEach(element => {
-                    // 这里需要恢复中文文本，实际项目中可以使用翻译对象
-                    // 为了简化，这里刷新页面恢复中文
-                    location.reload();
-                });
-                langText.textContent = 'English';
-                langTextMobile.textContent = 'English';
-                document.documentElement.lang = 'zh-CN';
-                currentLang = 'zh';
-            }
+
+        // 统一语言更新函数（已修复属性获取错误）
+        function updateLanguage() {
+            // 遍历所有有data-zh和data-en的元素（包括动态生成的）
+            document.querySelectorAll('[data-zh][data-en]').forEach(element => {
+                // 关键修复：添加data-前缀
+                const text = element.getAttribute('data-' + currentLang);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            // 更新语言按钮文本
+            const btnText = currentLang === 'zh' ? 'English' : '中文';
+            langText.textContent = btnText;
+            langTextMobile.textContent = btnText;
+            // 更新文档语言
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
         }
-        
+
+        // 切换语言函数（不再刷新页面）
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            updateLanguage();
+        }
+
         langToggle.addEventListener('click', toggleLanguage);
         langToggleMobile.addEventListener('click', toggleLanguage);
         
