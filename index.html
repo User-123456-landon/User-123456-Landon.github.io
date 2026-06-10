@@ -40,6 +40,32 @@
             .page.active {
                 display: block;
             }
+            /* 参数表统一样式 - 彻底解决对齐问题 */
+            .param-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .param-table th,
+            .param-table td {
+                border: 1px solid #d1d5db;
+                padding: 12px 16px;
+                text-align: left;
+            }
+            .param-table th {
+                background-color: #f3f4f6;
+                font-weight: 600;
+            }
+            /* 强制所有表格第一列宽度为200px */
+            .param-table td:first-child {
+                width: 200px;
+                min-width: 200px;
+                max-width: 200px;
+                font-weight: 500;
+                color: #4b5563;
+            }
+            .param-table td:last-child {
+                width: auto;
+            }
         }
     </style>
 </head>
@@ -244,9 +270,6 @@
                             <p class="text-gray-600" data-en="We provide comprehensive after-sales service to ensure customer satisfaction.">我们提供完善的售后服务，确保客户满意。</p>
                         </div>
                     </div>
-                    
-                    <div class="mt-16">
-                    </div>
                 </div>
             </section>
             <!-- 全球布局/Find Us -->
@@ -274,8 +297,6 @@
                                         <p class="text-gray-600">Contact Number: +86 178 1812 6544</p>
                                     </div>
                                 </div>
-                                
-                                
                                 
                                 <div class="flex items-start">
                                     <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mr-4">
@@ -310,15 +331,11 @@
                             <a href="#" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-md font-medium transition-custom inline-block" data-page="about" data-en="Read More">了解更多</a>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
-                            
                             <img src="gy2.jpg" alt="About Us" class="w-full h-65 object-cover rounded-lg">
                             <img src="gy3.jpg" alt="About Us" class="w-full h-65 object-cover rounded-lg">
-                            
                         </div>
                     </div>
                 </div>
-            </section>
-      
             </section>
         </section>
         <!-- 产品中心/Products -->
@@ -595,20 +612,20 @@
                         
                         <div class="flex space-x-4">
                             <a href="#" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-md font-medium transition-custom inline-block" data-page="contact" data-en="Inquire Now">立即咨询</a>
-                            
                         </div>
                     </div>
                 </div>
                 
-                <!-- 产品详细参数 -->
+                <!-- 产品详细参数（已修复对齐+居中+宽度优化） -->
                 <div class="mt-16">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-8" data-en="Parameters Table">参数表</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center" data-en="Parameters Table">参数表</h2>
                     
-                    <div class="overflow-x-auto">
-                        <table class="w-full border-collapse">
+                    <!-- 关键修复：添加max-w-4xl mx-auto让表格居中，最大宽度1000px -->
+                    <div class="overflow-x-auto max-w-4xl mx-auto">
+                        <table class="param-table mt-8">
                             <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="border border-gray-300 px-4 py-3 text-left" colspan="2" data-en="Basic Info">基本信息</th>
+                                <tr>
+                                    <th colspan="2" data-en="Basic Info">基本信息</th>
                                 </tr>
                             </thead>
                             <tbody id="detail-basic-info">
@@ -616,10 +633,10 @@
                             </tbody>
                         </table>
                         
-                        <table class="w-full border-collapse mt-8">
+                        <table class="param-table mt-8">
                             <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="border border-gray-300 px-4 py-3 text-left" colspan="2" data-en="Performance">性能参数</th>
+                                <tr>
+                                    <th colspan="2" data-en="Performance">性能参数</th>
                                 </tr>
                             </thead>
                             <tbody id="detail-performance">
@@ -627,10 +644,10 @@
                             </tbody>
                         </table>
                         
-                        <table class="w-full border-collapse mt-8" id="detail-battery-table" style="display: none;">
+                        <table class="param-table mt-8" id="detail-battery-table" style="display: none;">
                             <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="border border-gray-300 px-4 py-3 text-left" colspan="2" data-en="Battery & Charger">电池与充电器</th>
+                                <tr>
+                                    <th colspan="2" data-en="Battery & Charger">电池与充电器</th>
                                 </tr>
                             </thead>
                             <tbody id="detail-battery">
@@ -638,10 +655,10 @@
                             </tbody>
                         </table>
                         
-                        <table class="w-full border-collapse mt-8">
+                        <table class="param-table mt-8">
                             <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="border border-gray-300 px-4 py-3 text-left" colspan="2" data-en="Packing Information">包装信息</th>
+                                <tr>
+                                    <th colspan="2" data-en="Packing Information">包装信息</th>
                                 </tr>
                             </thead>
                             <tbody id="detail-packing">
@@ -769,11 +786,8 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  
-                    
                     <!-- 喀麦隆 -->
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-custom">
-                        <!-- 喀麦隆地点图片 - 替换下面的src为您自己的图片地址 -->
                         <div class="h-48 overflow-hidden">
                             <img src="kml.jpg" alt="SNOPOR in Cameroon" class="w-full h-full object-cover">
                         </div>
@@ -802,7 +816,6 @@
                     
                     <!-- 越南 -->
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-custom">
-                        <!-- 越南地点图片 - 替换下面的src为您自己的图片地址 -->
                         <div class="h-48 overflow-hidden">
                             <img src="yn.jpg" alt="SNOPOR in Vietnam" class="w-full h-full object-cover">
                         </div>
@@ -963,13 +976,16 @@
     </footer>
     <!-- JavaScript -->
     <script>
-        // ==================== 产品数据管理 ====================
+        // ==================== 产品数据管理（已全部改为双语描述） ====================
         // 所有产品的详细数据，添加/修改产品只需在这里编辑
         const productsData = {
             // 电动摩托车
             "m17": {
                 name: "M17",
-                desc: "时尚轻便的电动滑板车，适合城市日常通勤，续航持久，操控灵活。",
+                desc: {
+                    zh: "时尚轻便的电动滑板车，适合城市日常通勤，续航持久，操控灵活。",
+                    en: "Stylish and lightweight electric scooter, perfect for daily urban commuting with long range and agile handling."
+                },
                 mainImage: "dian3.png",
                 colors: [
                     {name: "白色", en: "White", color: "#ffffff", image: "dian3.png"},
@@ -990,7 +1006,7 @@
                     {label: "最大载重", en: "MAX Load", value: "150 KG"}
                 ],
                 performance: [
-                    {label: "电机类型", en: "Motor Type", value: "轮毂电机"},
+                    {label: "电机类型", en: "Motor Type", value: "Hub"},
                     {label: "额定功率", en: "Power(Rated)", value: "1200W/500rpm"},
                     {label: "峰值功率", en: "Power(Peak)", value: "2400W/550rpm"},
                     {label: "最高时速", en: "Speed", value: "65 km/h"},
@@ -1008,7 +1024,10 @@
             },
             "boxer-electric": {
                 name: "BOXER",
-                desc: "强劲动力电动摩托车，适合长途骑行，配备大容量电池，性能卓越。",
+                desc: {
+                    zh: "强劲动力电动摩托车，适合长途骑行，配备大容量电池，性能卓越。",
+                    en: "Powerful electric motorcycle for long-distance riding, equipped with large-capacity battery and excellent performance."
+                },
                 mainImage: "dian5.png",
                 colors: [
                     {name: "红色", en: "Red", color: "#dc2626", image: "dian5r.jpg"},
@@ -1032,7 +1051,7 @@
                     {label: "最大载重", en: "MAX Load", value: "150 KG"}
                 ],
                 performance: [
-                    {label: "电机类型", en: "Motor Type", value: "中置电机"},
+                    {label: "电机类型", en: "Motor Type", value: "Mid Motor"},
                     {label: "额定功率", en: "Power(Rated)", value: "3000W/6000~8000rpm"},
                     {label: "峰值功率", en: "Power(Peak)", value: "6500W/6000rpm"},
                     {label: "最高时速", en: "Speed", value: "80 km/h"},
@@ -1050,7 +1069,10 @@
             },
             "t09": {
                 name: "T09",
-                desc: "专业电动配送车，超大储物空间，超长续航，专为快递外卖行业设计。",
+                desc: {
+                    zh: "专业电动配送车，超大储物空间，超长续航，专为快递外卖行业设计。",
+                    en: "Professional electric delivery vehicle with large storage space and long range, designed for express and food delivery industry."
+                },
                 mainImage: "dian6.png",
                 colors: [
                     {name: "黑色", en: "Black", color: "#000000", image: "dian6.png"},
@@ -1071,7 +1093,7 @@
                     {label: "最大载重", en: "MAX Load", value: "150 KG"}
                 ],
                 performance: [
-                    {label: "电机类型", en: "Motor Type", value: "轮毂电机"},
+                    {label: "电机类型", en: "Motor Type", value: "Hub"},
                     {label: "额定功率", en: "Power(Rated)", value: "3000W/550~650rpm"},
                     {label: "峰值功率", en: "Power(Peak)", value: "6000W/750~850rpm"},
                     {label: "最高时速", en: "Speed", value: "80 km/h"},
@@ -1089,7 +1111,10 @@
             },
             "x07": {
                 name: "X07",
-                desc: "越野电动自行车，全地形适应能力，强劲动力，适合户外探险。",
+                desc: {
+                    zh: "越野电动自行车，全地形适应能力，强劲动力，适合户外探险。",
+                    en: "Off-road electric bicycle with all-terrain adaptability and powerful performance, ideal for outdoor adventures."
+                },
                 mainImage: "dian7.png",
                 colors: [
                     {name: "红色", en: "Red", color: "#dc2626", image: "dian7r.jpg"},
@@ -1111,7 +1136,7 @@
                     {label: "最大载重", en: "MAX Load", value: "150 KG"}
                 ],
                 performance: [
-                    {label: "电机类型", en: "Motor Type", value: "中置电机"},
+                    {label: "电机类型", en: "Motor Type", value: "Mid Motor"},
                     {label: "额定功率", en: "Power(Rated)", value: "3000W"},
                     {label: "峰值功率", en: "Power(Peak)", value: "6000W"},
                     {label: "最高时速", en: "Speed", value: "80 km/h"},
@@ -1130,7 +1155,10 @@
             // 燃油摩托车
             "sn110": {
                 name: "SN110",
-                desc: "经典125cc燃油摩托车，经济省油，皮实耐用，适合日常代步。",
+                desc: {
+                    zh: "经典125cc燃油摩托车，经济省油，皮实耐用，适合日常代步。",
+                    en: "Classic 125cc fuel motorcycle, fuel-efficient, durable and reliable for daily commuting."
+                },
                 mainImage: "you1.png",
                 colors: [
                     {name: "橙色", en: "Orange", color: "#ffa500", image: "you1o.jpg"},
@@ -1165,13 +1193,16 @@
             },
             "suzuki-prince": {
                 name: "铃木太子",
-                desc: "经典太子车型，舒适骑行体验，复古外观设计，品质可靠。",
+                desc: {
+                    zh: "经典太子车型，舒适骑行体验，复古外观设计，品质可靠。",
+                    en: "Classic prince-style motorcycle with comfortable riding experience, retro design and reliable quality."
+                },
                 mainImage: "you5.png",
                 colors: [
                     {name: "红色", en: "Red", color: "#dc2626", image: "you5.png"},
                     {name: "黑色", en: "Black", color: "#000000", image: "you5b.jpg"}
                 ],
-                maxSpeed: "85 Km/hr",
+                maxSpeed: "85 Km/h",
                 range: "-",
                 ratedPower: "-",
                 peakPower: "-",
@@ -1198,7 +1229,10 @@
             },
             "tianhu-prince": {
                 name: "天虎太子",
-                desc: "豪华太子车型，配置丰富，动力强劲，适合长途骑行。",
+                desc: {
+                    zh: "豪华太子车型，配置丰富，动力强劲，适合长途骑行。",
+                    en: "Luxury prince-style motorcycle with rich configurations and powerful performance for long-distance riding."
+                },
                 mainImage: "you2.png",
                 colors: [
                     {name: "红色", en: "Red", color: "#dc2626", image: "you2.png"},
@@ -1231,7 +1265,10 @@
             },
             "boxer-fuel": {
                 name: "BOXER",
-                desc: "经典耐用的燃油摩托车，皮实抗造，维修方便，适合各种路况。",
+                desc: {
+                    zh: "经典耐用的燃油摩托车，皮实抗造，维修方便，适合各种路况。",
+                    en: "Classic and durable fuel motorcycle, rugged and easy to maintain, suitable for all road conditions."
+                },
                 mainImage: "you3.png",
                 colors: [
                     {name: "红色", en: "Red", color: "#dc2626", image: "you3r.jpg"},
@@ -1265,7 +1302,10 @@
             },
             "xpress": {
                 name: "XPRESS",
-                desc: "运动型燃油摩托车，流线型设计，加速迅猛，操控精准。",
+                desc: {
+                    zh: "运动型燃油摩托车，流线型设计，加速迅猛，操控精准。",
+                    en: "Sporty fuel motorcycle with streamlined design, rapid acceleration and precise handling."
+                },
                 mainImage: "you4.png",
                 colors: [
                     {name: "红色", en: "Red", color: "#dc2626", image: "you4r.jpg"},
@@ -1300,7 +1340,10 @@
             // 燃油三轮车
             "sn150zh-20a": {
                 name: "SN150ZH-20A",
-                desc: "重载型货运三轮车，坚固耐用，承载能力强，适合货物运输。",
+                desc: {
+                    zh: "重载型货运三轮车，坚固耐用，承载能力强，适合货物运输。",
+                    en: "Heavy-duty cargo tricycle, sturdy and durable with strong load capacity for goods transportation."
+                },
                 mainImage: "san1.png",
                 colors: [ 
                     {name: "红色", en: "Red", color: "#dc2626", image: "san1.png"}
@@ -1332,7 +1375,10 @@
             },
             "sn150zh-20b": {
                 name: "SN150ZH-20B",
-                desc: "加强型货运三轮车，加厚车架，加强减震，适合重载运输。",
+                desc: {
+                    zh: "加强型货运三轮车，加厚车架，加强减震，适合重载运输。",
+                    en: "Reinforced cargo tricycle with thickened frame and enhanced shock absorption for heavy-duty transportation."
+                },
                 mainImage: "san2.png",
                 colors: [
                       {name: "红色", en: "Red", color: "#dc2626", image: "san1.png"}
@@ -1364,7 +1410,10 @@
             },
             "sn150zh-175": {
                 name: "SN150ZH-175",
-                desc: "175cc大排量货运三轮车，动力更强劲，爬坡能力更强。",
+                desc: {
+                    zh: "175cc大排量货运三轮车，动力更强劲，爬坡能力更强。",
+                    en: "175cc large-displacement cargo tricycle with more powerful performance and better climbing ability."
+                },
                 mainImage: "san3.png",
                 colors: [
                    {name: "蓝色", en: "Blue", color: "#2563eb", image: "san3.png"}
@@ -1396,7 +1445,10 @@
             },
             "sn150zh-200": {
                 name: "SN150ZH-200",
-                desc: "200cc重型货运三轮车，专为山区和重载设计，性能卓越。",
+                desc: {
+                    zh: "200cc重型货运三轮车，专为山区和重载设计，性能卓越。",
+                    en: "200cc heavy-duty cargo tricycle, specially designed for mountainous areas and heavy loads with excellent performance."
+                },
                 mainImage: "san4.png",
                 colors: [
                     {name: "灰绿", en: "Green", color: "#96a18f", image: "san4.png"}
@@ -1428,7 +1480,10 @@
             },
             "sn150zh-200a": {
                 name: "SN150ZH-200A",
-                desc: "客运三轮车，宽敞舒适，安全可靠，适合城乡客运。",
+                desc: {
+                    zh: "客运三轮车，宽敞舒适，安全可靠，适合城乡客运。",
+                    en: "Passenger tricycle, spacious and comfortable, safe and reliable for urban and rural passenger transport."
+                },
                 mainImage: "san5.jpg",
                 colors: [
                    {name: "橙色", en: "Orange", color: "#ffa500", image: "san5.jpg"}
@@ -1461,7 +1516,10 @@
             // 太阳能与储能
             "pv-580w": {
                 name: "PV panel 580W",
-                desc: "高效单晶硅光伏板，转换效率高，寿命长，适合各种太阳能系统。",
+                desc: {
+                    zh: "高效单晶硅光伏板，转换效率高，寿命长，适合各种太阳能系统。",
+                    en: "High-efficiency monocrystalline silicon PV panel with high conversion efficiency and long lifespan, suitable for various solar systems."
+                },
                 mainImage: "gf1.jpg",
                 colors: [
                     {name: "黑", en: "Black", color: "#000000", image: "gf1.jpg"}
@@ -1493,7 +1551,10 @@
             },
             "pv-610w": {
                 name: "PV panel 610W",
-                desc: "大功率单晶硅光伏板，更高转换效率，更大发电量。",
+                desc: {
+                    zh: "大功率单晶硅光伏板，更高转换效率，更大发电量。",
+                    en: "High-power monocrystalline silicon PV panel with higher conversion efficiency and greater power generation."
+                },
                 mainImage: "gf2.jpg",
                 colors: [
                     {name: "黑", en: "Black", color: "#000000", image: "gf2.jpg"}
@@ -1525,7 +1586,10 @@
             },
             "snopor-1kwh": {
                 name: "Snopor 1kwh（300W）",
-                desc: "便携式储能电源，300W输出，1kwh容量，适合户外和应急使用。",
+                desc: {
+                    zh: "便携式储能电源，300W输出，1kwh容量，适合户外和应急使用。",
+                    en: "Portable energy storage power supply with 300W output and 1kwh capacity, ideal for outdoor and emergency use."
+                },
                 mainImage: "1kw.jpg",
                 colors: [
                     {name: "白", en: "White", color: "#ffffff", image: "1kw.jpg"}
@@ -1537,7 +1601,6 @@
                 chargingTime: "-",
                 colorText: "白",
                 basicInfo: [
-                   
                     {label: "产品名称", en: "Model Name", value: "Snopor 1kwh"},
                     {label: "容量", en: "Capacity", value: "1004.8Wh"},
                     {label: "尺寸", en: "Dimension", value: "210*185*208.5 MM"},
@@ -1550,7 +1613,7 @@
                 ],
                 battery: [
                     {label: "电池类型", en: "Battery Type", value: "LiFePO4"},
-                   {label: "循环寿命", en: "Cycle Life", value: "8000 cycles"},
+                    {label: "循环寿命", en: "Cycle Life", value: "8000 cycles"},
                     {label: "防护等级", en: "IP Rating", value: "P20"}
                 ],
                 packing: [
@@ -1560,7 +1623,10 @@
             },
             "snopor-2kwh": {
                 name: "Snopor 2kwh（1200W）",
-                desc: "大容量储能电源，1200W输出，2kwh容量，适合家庭和小型办公使用。",
+                desc: {
+                    zh: "大容量储能电源，1200W输出，2kwh容量，适合家庭和小型办公使用。",
+                    en: "Large-capacity energy storage power supply with 1200W output and 2kwh capacity, suitable for home and small office use."
+                },
                 mainImage: "2kw.jpg",
                 colors: [
                     {name: "白色", en: "White", color: "#ffffff", image: "2kw.jpg"}
@@ -1788,7 +1854,7 @@
             });
         });
         
-        // ==================== 新增：产品详情页动态加载功能 ====================
+        // ==================== 修复：产品详情页动态加载功能（支持双语描述） ====================
         // 加载产品详情
         function loadProductDetail(productId) {
             const product = productsData[productId];
@@ -1800,7 +1866,13 @@
             document.getElementById('detail-main-image').src = product.mainImage;
             document.getElementById('detail-main-image').alt = product.name;
             document.getElementById('detail-product-name').textContent = product.name;
-            document.getElementById('detail-product-desc').textContent = product.desc;
+            
+            // 关键修复：产品描述支持中英文切换
+            const descElement = document.getElementById('detail-product-desc');
+            descElement.setAttribute('data-zh', product.desc.zh);
+            descElement.setAttribute('data-en', product.desc.en);
+            descElement.textContent = product.desc[currentLang];
+            
             document.getElementById('detail-max-speed').textContent = product.maxSpeed;
             document.getElementById('detail-range').textContent = product.range;
             document.getElementById('detail-rated-power').textContent = product.ratedPower;
