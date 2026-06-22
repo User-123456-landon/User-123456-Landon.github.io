@@ -2188,12 +2188,28 @@ document.getElementById('lang-toggle-mobile').addEventListener('click', () => {
 // 表单提交成功提示
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
-contactForm.addEventListener('submit', e => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    setTimeout(() => {
-        formSuccess.classList.remove('hidden');
-        contactForm.reset();
-    }, 300);
+    // 获取表单数据
+    const formData = new FormData(contactForm);
+    try {
+        const res = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        if(res.ok){
+            formSuccess.classList.remove('hidden');
+            contactForm.reset();
+            setTimeout(()=>formSuccess.classList.add('hidden'),3000)
+        }else{
+            alert('提交失败，请稍后重试')
+        }
+    } catch(err) {
+        alert('网络异常，提交失败')
+    }
 });
 </script>
 </body>
