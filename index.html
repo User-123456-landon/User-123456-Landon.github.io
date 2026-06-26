@@ -189,7 +189,7 @@
                             <img src="cp1.jpg" alt="Electric motorcycle" class="w-full h-50 object-cover">
                             <div class="p-6 text-center">
                                 <h3 class="text-xl font-bold mb-2" data-en="Electric motorcycle">电动摩托车</h3>
-                                <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom" data-page="products" data-en="Read more">了解更多</a>
+                                <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom" data-page="products" data-category="electric-motorcycle" data-en="Read more">了解更多</a>
                             </div>
                         </div>
                          <!-- 产品2 -->
@@ -197,7 +197,7 @@
                             <img src="cp2.jpg" alt="Electric motorcycle" class="w-full h-50 object-cover">
                             <div class="p-6 text-center">
                                 <h3 class="text-xl font-bold mb-2" data-en="Fuel motorcycle">燃油摩托车</h3>
-                                <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom" data-page="products" data-en="Read more">了解更多</a>
+                                <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom" data-page="products" data-category="fuel-motorcycle" data-en="Read more">了解更多</a>
                             </div>
                         </div>
                         <!-- 产品3 -->
@@ -205,7 +205,7 @@
                             <img src="cp3.jpg" alt="Electric tricycle" class="w-full h-50 object-cover">
                             <div class="p-6 text-center">
                                 <h3 class="text-xl font-bold mb-2" data-en="Electric tricycle">电动三轮车</h3>
-                                <a href="#" class="text-primary hover:text-primary font-medium transition-custom" data-page="products" data-en="Read more">了解更多</a>
+                                <a href="#" class="text-primary hover:text-primary font-medium transition-custom" data-page="products" data-category="electric-tricycle" data-en="Read more">了解更多</a>
                             </div>
                         </div>
                         <!-- 产品4 -->
@@ -213,7 +213,7 @@
                             <img src="cp4.jpg" alt="Electric tricycle" class="w-full h-50 object-cover">
                             <div class="p-6 text-center">
                                 <h3 class="text-xl font-bold mb-2" data-en="Fuel tricycle">燃油三轮车</h3>
-                                <a href="#" class="text-primary hover:text-primary font-medium transition-custom" data-page="products" data-en="Read more">了解更多</a>
+                                <a href="#" class="text-primary hover:text-primary font-medium transition-custom" data-page="products" data-category="fuel-tricycle" data-en="Read more">了解更多</a>
                             </div>
                         </div>
                         <!-- 产品5 -->
@@ -221,7 +221,7 @@
                             <img src="cp5.jpg" alt="Solar and energy" class="w-full h-50 object-cover">
                             <div class="p-6 text-center">
                                 <h3 class="text-xl font-bold mb-2" data-en="Solar and energy">太阳能与储能</h3>
-                                <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom" data-page="products" data-en="Read more">了解更多</a>
+                                <a href="#" class="text-primary hover:text-primary/80 font-medium transition-custom" data-page="products" data-category="solar-energy" data-en="Read more">了解更多</a>
                             </div>
                         </div>
                     </div>
@@ -345,7 +345,7 @@
                 <div class="flex flex-wrap justify-center mb-12 gap-5">
                     <button class="product-tab active bg-primary text-white px-6 py-2 rounded-md font-medium transition-custom" data-category="electric-motorcycle" data-en="Electric Motorcycle">电动摩托车</button>
                    <button class="product-tab active bg-primary text-white px-6 py-2 rounded-md font-medium transition-custom" data-category="fuel-motorcycle" data-en="Fuel Motorcycle">燃油摩托车</button>
-                    <button class="product-tab bg-gray-200 text-dark hover:bg-gray-300 px-6 py-2 rounded-md font-medium transition-custom" data-category="electricl-tricycle" data-en="Electric Tricycle">电动三轮车</button>
+                    <button class="product-tab bg-gray-200 text-dark hover:bg-gray-300 px-6 py-2 rounded-md font-medium transition-custom" data-category="electric-tricycle" data-en="Electric Tricycle">电动三轮车</button>
                     <button class="product-tab bg-gray-200 text-dark hover:bg-gray-300 px-6 py-2 rounded-md font-medium transition-custom" data-category="fuel-tricycle" data-en="Fuel Tricycle">燃油三轮车</button>
                     <button class="product-tab bg-gray-200 text-dark hover:bg-gray-300 px-6 py-2 rounded-md font-medium transition-custom" data-category="solar-energy" data-en="Solar And Energy">太阳能与储能</button>
                 </div>
@@ -457,7 +457,7 @@
                         </div>
                     </div>
                     <!-- 电动三轮车 -->
-                    <div class="product-category hidden" id="electricl-tricycle">
+                    <div class="product-category hidden" id="electric-tricycle">
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-custom product-card" data-product-id="SN1500S-1">
                                 <img src="dsl1.jpg" alt="SN150ZH-20A" class="w-full h-70 object-cover">
@@ -1923,23 +1923,27 @@ const productsData = {
     }
 };
 // ==================== 全局变量 ====================
+let currentProductTab = sessionStorage.getItem('activeProductTab') || 'electric-motorcycle';
 let currentProductId = null;
 let currentLang = 'zh';
 const langText = document.getElementById('lang-text');
 const langTextMobile = document.getElementById('lang-text-mobile');
-// ==================== 初始化：缓存页面原始中文 ====================
+
+// ==================== 初始化缓存双语文字 ====================
 document.querySelectorAll('[data-en]').forEach(el => {
     if (!el.hasAttribute('data-zh')) {
         el.setAttribute('data-zh', el.textContent.trim());
     }
 });
-// ==================== 移动端菜单切换 ====================
+
+// ==================== 移动端菜单控制 ====================
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
 });
-// ==================== 导航栏滚动效果 ====================
+
+// ==================== 导航栏滚动样式 ====================
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -1950,13 +1954,17 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('py-2');
     }
 });
-// ==================== 页面切换逻辑（修复原switch语法错误） ====================
+
+// ==================== 页面切换核心函数 ====================
 const navLinks = document.querySelectorAll('[data-page]');
 const pages = document.querySelectorAll('.page');
-function switchPage(pageName) {
+function switchPage(pageName, targetTabId = null) {
+    // 隐藏全部页面
     pages.forEach(page => page.classList.remove('active'));
-    const target = document.getElementById(pageName + '-page');
-    if (target) target.classList.add('active');
+    const targetPage = document.getElementById(pageName + '-page');
+    if (targetPage) targetPage.classList.add('active');
+
+    // 导航高亮重置
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('text-primary');
         link.classList.add('text-dark');
@@ -1969,42 +1977,79 @@ function switchPage(pageName) {
     });
     mobileMenu.classList.add('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-// ========== 新增：切换到产品页自动重置Tab ==========
-    if(pageName === 'products'){
-        const tabs = document.querySelectorAll('.product-tab');
-        const cats = document.querySelectorAll('.product-category');
-        // 全部取消激活
-        tabs.forEach(t => {
-            t.classList.remove('active', 'bg-primary', 'text-white');
-            t.classList.add('bg-gray-200', 'text-dark', 'hover:bg-gray-300');
-        });
-        cats.forEach(c => c.classList.add('hidden'));
-        // 激活第一个tab
-        const firstTab = tabs[0];
-        firstTab.classList.add('active', 'bg-primary', 'text-white');
-        firstTab.classList.remove('bg-gray-200', 'text-dark', 'hover:bg-gray-300');
-        document.getElementById(firstTab.dataset.category).classList.remove('hidden');
+
+    // 进入产品页自动激活对应分类
+    if (pageName === 'products') {
+        const activeTabId = targetTabId || sessionStorage.getItem('activeProductTab') || 'electric-motorcycle';
+        activateProductTab(activeTabId);
     }
 }
+
+// 所有导航链接绑定点击
 navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', e => {
         e.preventDefault();
-        switchPage(link.dataset.page);
-switchPage(pageName);
+        const page = link.dataset.page;
+        const tab = link.dataset.category || null;
+        switchPage(page, tab);
     });
 });
-// ==================== 首页轮播图 ====================
+
+// ==================== 产品Tab切换统一函数 ====================
+const productTabs = document.querySelectorAll('.product-tab');
+const productCats = document.querySelectorAll('.product-category');
+function activateProductTab(tabId) {
+    // 清空所有标签激活样式
+    productTabs.forEach(t => {
+        t.classList.remove('active', 'bg-primary', 'text-white');
+        t.classList.add('bg-gray-200', 'text-dark', 'hover:bg-gray-300');
+    });
+    // 隐藏所有分类内容
+    productCats.forEach(c => c.classList.add('hidden'));
+    // 激活目标标签
+    const targetBtn = document.querySelector(`.product-tab[data-category="${tabId}"]`);
+    if (targetBtn) {
+        targetBtn.classList.add('active', 'bg-primary', 'text-white');
+        targetBtn.classList.remove('bg-gray-200', 'text-dark', 'hover:bg-gray-300');
+    }
+    // 显示对应分类
+    const targetCat = document.getElementById(tabId);
+    if (targetCat) targetCat.classList.remove('hidden');
+    // 存入本地会话缓存
+    currentProductTab = tabId;
+    sessionStorage.setItem('activeProductTab', tabId);
+}
+
+// Tab点击事件
+productTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const tabId = tab.dataset.category;
+        activateProductTab(tabId);
+    });
+});
+
+// ==================== 首页轮播（修复之前报错代码） ====================
 const slides = document.querySelectorAll('.slide');
 const sliderDots = document.querySelectorAll('.slider-dot');
 const prevSlideBtn = document.getElementById('prev-slide');
 const nextSlideBtn = document.getElementById('next-slide');
 let currentSlide = 0;
 let slideTimer;
+
 function renderSlide(idx) {
-    slides.forEach(s => s.classList.replace('opacity-100', 'opacity-0'));
-    sliderDots.forEach(d => d.classList.replace('opacity-100', 'opacity-50'));
-    slides[idx].classList.replace('opacity-0', 'opacity-100');
-    sliderDots[idx].classList.replace('opacity-50', 'opacity-100');
+    // 修复：不能直接给NodeList调用classList
+    slides.forEach(s => {
+        s.classList.remove('opacity-100');
+        s.classList.add('opacity-0');
+    });
+    sliderDots.forEach(d => {
+        d.classList.remove('opacity-100');
+        d.classList.add('opacity-50');
+    });
+    slides[idx].classList.remove('opacity-0');
+    slides[idx].classList.add('opacity-100');
+    sliderDots[idx].classList.remove('opacity-50');
+    sliderDots[idx].classList.add('opacity-100');
     currentSlide = idx;
 }
 function nextSlide() {
@@ -2021,67 +2066,78 @@ function startAutoSlide() {
 function stopAutoSlide() {
     clearInterval(slideTimer);
 }
-prevSlideBtn.addEventListener('click', () => { stopAutoSlide(); prevSlide(); startAutoSlide(); });
-nextSlideBtn.addEventListener('click', () => { stopAutoSlide(); nextSlide(); });
-sliderDots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => { stopAutoSlide(); renderSlide(idx); startAutoSlide(); });
+prevSlideBtn.addEventListener('click', () => {
+    stopAutoSlide();
+    prevSlide();
+    startAutoSlide();
 });
-startAutoSlide();
-// ==================== 产品分类标签切换 ====================
-const productTabs = document.querySelectorAll('.product-tab');
-const productCats = document.querySelectorAll('.product-category');
-productTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        productTabs.forEach(t => {
-            t.classList.remove('active', 'bg-primary', 'text-white');
-            t.classList.add('bg-gray-200', 'text-dark', 'hover:bg-gray-300');
-        });
-        tab.classList.add('active', 'bg-primary', 'text-white');
-        tab.classList.remove('bg-gray-200', 'text-dark', 'hover:bg-gray-300');
-        const catId = tab.dataset.category;
-        productCats.forEach(c => c.classList.add('hidden'));
-        document.getElementById(catId).classList.remove('hidden');
+nextSlideBtn.addEventListener('click', () => {
+    stopAutoSlide();
+    nextSlide();
+    startAutoSlide();
+});
+sliderDots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+        stopAutoSlide();
+        renderSlide(idx);
+        startAutoSlide();
     });
 });
-// ==================== 加载产品详情（核心：参数表头/参数值/颜色双语 ====================
+startAutoSlide();
+
+// ==================== 产品详情点击逻辑 ====================
+document.querySelectorAll('.view-detail-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const card = btn.closest('.product-card');
+        const pid = card.dataset.productId;
+        // 记录当前所属分类
+        const parentCat = card.closest('.product-category').id;
+        sessionStorage.setItem('activeProductTab', parentCat);
+        currentProductTab = parentCat;
+        loadProductDetail(pid);
+    });
+});
+
+// 加载产品详情页面
 function loadProductDetail(productId) {
     const product = productsData[productId];
     if (!product) return;
     currentProductId = productId;
-    // 基础图文赋值
     document.getElementById('detail-main-image').src = product.mainImage;
     document.getElementById('detail-main-image').alt = product.name;
     document.getElementById('detail-product-name').textContent = product.name;
-    // 产品描述双语绑定
+
     const descEl = document.getElementById('detail-product-desc');
     descEl.setAttribute('data-zh', product.desc.zh);
     descEl.setAttribute('data-en', product.desc.en);
     descEl.textContent = currentLang === 'zh' ? product.desc.zh : product.desc.en;
-    // 固定单行参数
+
     document.getElementById('detail-max-speed').textContent = product.maxSpeed;
     document.getElementById('detail-range').textContent = product.range;
     document.getElementById('detail-rated-power').textContent = product.ratedPower;
     document.getElementById('detail-peak-power').textContent = product.peakPower;
     document.getElementById('detail-charging-time').textContent = product.chargingTime;
-    // 颜色文字容器绑定双语
+
     const colorTextEl = document.getElementById('detail-colors');
-    colorTextEl.setAttribute('data-zh', product.colorText);
-    colorTextEl.setAttribute('data-en', product.colorTextEn);
-    colorTextEl.textContent = currentLang === 'zh' ? product.colorText : product.colorTextEn;
-    // 生成颜色选择圆点
+    colorTextEl.setAttribute('data-zh', product.colorText || '-');
+    colorTextEl.setAttribute('data-en', product.colorTextEn || '-');
+    colorTextEl.textContent = currentLang === 'zh' ? (product.colorText || '-') : (product.colorTextEn || '-');
+
+    // 渲染颜色选择器
     const colorWrap = document.getElementById('detail-color-options');
     colorWrap.innerHTML = '';
     if (product.colors && product.colors.length > 0) {
-        product.colors.forEach((color, idx) => {
+        product.colors.forEach((c, idx) => {
             const btn = document.createElement('button');
             btn.className = `w-12 h-12 rounded-full border-2 transition-custom ${idx === 0 ? 'border-primary' : 'border-transparent hover:border-primary'}`;
-            btn.style.backgroundColor = color.color;
-            if (color.name === '白色' || color.en === 'White') btn.classList.add('border-gray-300');
-            btn.setAttribute('data-zh', color.name);
-            btn.setAttribute('data-en', color.en);
-            btn.setAttribute('data-image', color.image);
-            btn.title = currentLang === 'zh' ? color.name : color.en;
-            btn.addEventListener('click', () => {
+            btn.style.backgroundColor = c.color;
+            if (c.name === '白色') btn.classList.add('border-gray-300');
+            btn.dataset.zh = c.name;
+            btn.dataset.en = c.en;
+            btn.dataset.image = c.image;
+            btn.title = currentLang === 'zh' ? c.name : c.en;
+            btn.onclick = () => {
                 colorWrap.querySelectorAll('button').forEach(opt => {
                     opt.classList.remove('border-primary');
                     opt.classList.add('border-transparent');
@@ -2089,108 +2145,76 @@ function loadProductDetail(productId) {
                 });
                 btn.classList.add('border-primary');
                 btn.classList.remove('border-transparent', 'border-gray-300');
-                document.getElementById('detail-main-image').src = color.image;
-            });
+                document.getElementById('detail-main-image').src = c.image;
+            };
             colorWrap.appendChild(btn);
         });
     } else {
         colorWrap.parentElement.style.display = 'none';
     }
-    // 生成基础信息表格（表头+参数值均绑定data-zh/data-en）
-    const basicTbody = document.getElementById('detail-basic-info');
-    basicTbody.innerHTML = '';
-    product.basicInfo.forEach(item => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}"></td>
-            <td class="border border-gray-300 px-4 py-3" data-zh="${item.valueZh}" data-en="${item.valueEn}"></td>
-        `;
-        basicTbody.appendChild(tr);
-    });
-    // 性能参数表
-    const perfTbody = document.getElementById('detail-performance');
-    perfTbody.innerHTML = '';
-    product.performance.forEach(item => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}"></td>
-            <td class="border border-gray-300 px-4 py-3" data-zh="${item.valueZh}" data-en="${item.valueEn}"></td>
-        `;
-        perfTbody.appendChild(tr);
-    });
-    // 电池表
-    const batteryTable = document.getElementById('detail-battery-table');
-    const batteryTbody = document.getElementById('detail-battery');
-    batteryTbody.innerHTML = '';
-    if (product.battery && product.battery.length > 0) {
-        batteryTable.style.display = 'table';
-        product.battery.forEach(item => {
+// ========== 修复：渲染表格工具函数，先声明再使用 ==========
+    function renderTable(wrapId, list) {
+        // 先获取元素、声明变量，再操作
+        const tableWrap = document.getElementById(wrapId);
+        if (!tableWrap) return;
+        tableWrap.innerHTML = '';
+        list.forEach(item => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}"></td>
-                <td class="border border-gray-300 px-4 py-3" data-zh="${item.valueZh}" data-en="${item.valueEn}"></td>
+                <td data-zh="${item.label}" data-en="${item.en}" class="px-4 py-3 border font-medium"></td>
+                <td data-zh="${item.valueZh}" data-en="${item.valueEn}" class="px-4 py-3 border"></td>
             `;
-            batteryTbody.appendChild(tr);
+            tableWrap.appendChild(tr);
         });
+    }
+
+    // 渲染四个参数表
+    renderTable('detail-basic-info', product.basicInfo);
+    renderTable('detail-performance', product.performance);
+    
+    const batteryTable = document.getElementById('detail-battery-table');
+    const batteryTbody = document.getElementById('detail-battery');
+    if (product.battery && product.battery.length > 0) {
+        batteryTable.style.display = 'table';
+        renderTable('detail-battery', product.battery);
     } else {
         batteryTable.style.display = 'none';
     }
-    // 包装信息表
-    const packTbody = document.getElementById('detail-packing');
-    packTbody.innerHTML = '';
-    product.packing.forEach(item => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td class="border border-gray-300 px-4 py-3 font-medium" data-zh="${item.label}" data-en="${item.en}"></td>
-            <td class="border border-gray-300 px-4 py-3" data-zh="${item.valueZh}" data-en="${item.valueEn}"></td>
-        `;
-        packTbody.appendChild(tr);
-    });
-    // 加载完成统一更新所有双语文本
+
+    renderTable('detail-packing', product.packing);
+
+    // 更新双语并跳转
     updateLanguage();
     switchPage('product-detail');
 }
-// 绑定所有查看详情按钮
-document.querySelectorAll('.view-detail-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-        e.preventDefault();
-        const card = btn.closest('.product-card');
-        const pid = card.dataset.productId;
-        loadProductDetail(pid);
-    });
-});
-// ==================== 全局语言切换函数（自动刷新所有双语DOM） ====================
+    
+
+// ==================== 语言切换全局更新 ====================
 function updateLanguage() {
-    // 遍历全部带双语属性元素
     document.querySelectorAll('[data-zh][data-en]').forEach(el => {
-        const text = el.dataset[currentLang];
-        if (text !== undefined) el.textContent = text;
+        el.textContent = el.dataset[currentLang];
     });
-    // 更新语言按钮文字
     const btnText = currentLang === 'zh' ? 'English' : '中文';
     langText.textContent = btnText;
     langTextMobile.textContent = btnText;
     document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
-    // 更新颜色块悬浮提示
     document.querySelectorAll('#detail-color-options button').forEach(btn => {
         btn.title = currentLang === 'zh' ? btn.dataset.zh : btn.dataset.en;
     });
 }
-// 语言切换点击事件
 document.getElementById('lang-toggle').addEventListener('click', () => {
     currentLang = currentLang === 'zh' ? 'en' : 'zh';
     updateLanguage();
 });
 document.getElementById('lang-toggle-mobile').addEventListener('click', () => {
     currentLang = currentLang === 'zh' ? 'en' : 'zh';
-    updateLanguage();
 });
-// 表单提交成功提示
+
+// ==================== 表单提交修复（能收到邮件） ====================
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // 获取表单数据
     const formData = new FormData(contactForm);
     try {
         const res = await fetch(contactForm.action, {
@@ -2199,17 +2223,23 @@ contactForm.addEventListener('submit', async (e) => {
             headers: {
                 'Accept': 'application/json'
             }
-        })
-        if(res.ok){
+        });
+        if (res.ok) {
             formSuccess.classList.remove('hidden');
             contactForm.reset();
-            setTimeout(()=>formSuccess.classList.add('hidden'),3000)
-        }else{
-            alert('提交失败，请稍后重试')
+            setTimeout(() => formSuccess.classList.add('hidden'), 3000);
+        } else {
+            alert('提交失败，请稍后重试');
         }
-    } catch(err) {
-        alert('网络异常，提交失败')
+    } catch (err) {
+        alert('网络异常，提交失败');
     }
+});
+
+// 页面加载完成读取缓存Tab
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTab = sessionStorage.getItem('activeProductTab');
+    if (savedTab) activateProductTab(savedTab);
 });
 </script>
 </body>
