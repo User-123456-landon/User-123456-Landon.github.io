@@ -89,6 +89,9 @@
     }
 }
 </style>
+    <!-- Leaflet 地图库 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body class="font-sans text-dark bg-white">
     <!-- 导航栏 -->
@@ -797,9 +800,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                        <div class="h-48 overflow-hidden">
-                            <img src="kml.jpg" alt="SNOPOR in Cameroon" class="w-full h-full object-cover">
-                        </div>
+                        <div id="map-cameroon" class="h-48 w-full"></div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-4" data-en="SNOPOR in Cameroon">喀麦隆 SNOPOR</h3>
                             <div class="space-y-2">
@@ -811,9 +812,7 @@
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                        <div class="h-48 overflow-hidden">
-                            <img src="yn.jpg" alt="SNOPOR in Vietnam" class="w-full h-full object-cover">
-                        </div>
+                        <div id="map-vietnam" class="h-48 w-full"></div>
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-4" data-en="SNOPOR in Vietnam">越南 SNOPOR</h3>
                             <p class="text-gray-500 italic" data-en="Coming Soon">即将开业</p>
@@ -1950,6 +1949,10 @@ const productsData = {
 let currentProductTab = sessionStorage.getItem('activeProductTab') || 'electric-motorcycle';
 let currentProductId = null;
 let currentLang = 'zh';
+let mapCameroon = null;
+let mapVietnam = null;
+let cameroonMarker = null;
+let vietnamMarker = null;
 const langText = document.getElementById('lang-text');
 const langTextMobile = document.getElementById('lang-text-mobile');
 
@@ -2006,6 +2009,15 @@ function switchPage(pageName, targetTabId = null) {
     if (pageName === 'products') {
         const activeTabId = targetTabId || sessionStorage.getItem('activeProductTab') || 'electric-motorcycle';
         activateProductTab(activeTabId);
+    }
+	if (pageName === 'find-us') {
+        setTimeout(() => {
+            initCameroonMap();
+            initVietnamMap();
+            // 修复隐藏页面初始化后地图显示不全的问题
+            if (mapCameroon) mapCameroon.invalidateSize();
+            if (mapVietnam) mapVietnam.invalidateSize();
+        }, 100);
     }
 }
 
@@ -2215,6 +2227,18 @@ function loadProductDetail(productId) {
 
 // ==================== 语言切换全局更新 ====================
 function updateLanguage() {
+if (cameroonMarker && mapCameroon) {
+        const lat = cameroonMarker.getLatLng().lat;
+        const lng = cameroonMarker.getLatLng().lng;
+        const navUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+        cameroonMarker.setPopupContent(getCameroonPopupHtml(navUrl));
+    }
+    if (vietnamMarker && mapVietnam) {
+        const lat = vietnamMarker.getLatLng().lat;
+        const lng = vietnamMarker.getLatLng().lng;
+        const navUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+        vietnamMarker.setPopupContent(getVietnamPopupHtml(navUrl));
+    }
     document.querySelectorAll('[data-zh][data-en]').forEach(el => {
         el.textContent = el.dataset[currentLang];
     });
@@ -2265,6 +2289,109 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedTab = sessionStorage.getItem('activeProductTab');
     if (savedTab) activateProductTab(savedTab);
 });
+// 初始化喀麦隆雅温得展厅地图
+function initCameroonMap() {
+    if (mapCameroon) return;
+    const lat = 3.848;
+    const lng = 11.5021;
+    mapCameroon = L.map('map-cameroon').setView([lat, lng], 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(mapCameroon);
+
+    const navUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+    // 根据当前语言生成弹窗内容
+    const popupContent = getCameroonPopupHtml(navUrl);
+    
+    cameroonMarker = L.marker([lat, lng])
+        .addTo(mapCameroon)
+        .bindPopup(popupContent)
+        .openPopup();
+}
+
+// 初始化越南展厅地图
+function initVietnamMap() {
+    if (mapVietnam) return;
+    const lat = 10.8231;
+    const lng = 106.6297;
+    mapVietnam = L.map('map-vietnam').setView([lat, lng], 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(mapVietnam);
+
+    const navUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+    const popupContent = getVietnamPopupHtml(navUrl);
+    
+    vietnamMarker = L.marker([lat, lng])
+        .addTo(mapVietnam)
+        .bindPopup(popupContent)
+        .openPopup();
+}
+
+// 喀麦隆弹窗（国内测试版）
+function getCameroonPopupHtml(navUrl) {
+    const lat = 3.848;
+    const lng = 11.5021;
+    // 高德地图跳转链接（国内可访问，仅调试用）
+    const testUrl = `https://uri.amap.com/marker?position=${lng},${lat}&name=SNOPOR Cameroon Showroom`;
+    
+    const title = currentLang === 'zh' ? 'SNOPOR 喀麦隆展厅' : 'SNOPOR Cameroon Showroom';
+    const address = currentLang === 'zh' ? '喀麦隆 雅温得 三区 恩西梅永达梅斯' : 'Nsimeyon-dames, Yaoundé 3, Cameroon';
+    const btnMain = currentLang === 'zh' ? '🧭 Google 导航（海外用户用）' : '🧭 Google Maps';
+    const btnTest = currentLang === 'zh' ? '🗺️ 国内导航' : '🗺️ Domestic Maps';
+    
+    return `
+        <div style="min-width: 260px; line-height: 1.5;">
+            <strong>${title}</strong>
+            <p style="margin: 6px 0; font-size: 13px; color: #555;">${address}</p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a href="${navUrl}" target="_blank" 
+                   style="display: inline-block; padding: 4px 10px; background: #165DFF; color: #fff; 
+                          border-radius: 4px; font-size: 13px; text-decoration: none;">
+                    ${btnMain}
+                </a>
+                <a href="${testUrl}" target="_blank" 
+                   style="display: inline-block; padding: 4px 10px; background: #6b7280; color: #fff; 
+                          border-radius: 4px; font-size: 13px; text-decoration: none;">
+                    ${btnTest}
+                </a>
+            </div>
+        </div>
+    `;
+}
+
+// 越南弹窗（国内测试版）
+function getVietnamPopupHtml(navUrl) {
+    const lat = 10.8231;
+    const lng = 106.6297;
+    const testUrl = `https://uri.amap.com/marker?position=${lng},${lat}&name=SNOPOR Vietnam Showroom`;
+    
+    const title = currentLang === 'zh' ? 'SNOPOR 越南展厅' : 'SNOPOR Vietnam Showroom';
+    const address = currentLang === 'zh' ? '即将开业' : 'Coming Soon';
+    const btnMain = currentLang === 'zh' ? '🧭 Google 导航（海外用户用）' : '🧭 Google Maps';
+    const btnTest = currentLang === 'zh' ? '🗺️ 国内导航' : '🗺️ Domestic Maps';
+    
+    return `
+        <div style="min-width: 260px; line-height: 1.5;">
+            <strong>${title}</strong>
+            <p style="margin: 6px 0; font-size: 13px; color: #555;">${address}</p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a href="${navUrl}" target="_blank" 
+                   style="display: inline-block; padding: 4px 10px; background: #165DFF; color: #fff; 
+                          border-radius: 4px; font-size: 13px; text-decoration: none;">
+                    ${btnMain}
+                </a>
+                <a href="${testUrl}" target="_blank" 
+                   style="display: inline-block; padding: 4px 10px; background: #6b7280; color: #fff; 
+                          border-radius: 4px; font-size: 13px; text-decoration: none;">
+                    ${btnTest}
+                </a>
+            </div>
+        </div>
+    `;
+}
 </script>
 </body>
 </html>
